@@ -1,5 +1,6 @@
 import {  } from 'react'
-import Nav from './Nav.tsx'
+import Header from './Header.tsx';
+import Home  from './Pages/Home.tsx';
 import './index.css'
 
 function App() {
@@ -7,10 +8,13 @@ function App() {
 
   return (
     <>
-     <Nav/> 
+     <Header/> 
+     <Home/>
       
     </>
   )
 }
 
 export default App
+
+
