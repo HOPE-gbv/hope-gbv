@@ -20,17 +20,43 @@ export default function Home() {
         </div>
       </article>
 
-      <div className="relative py-8 px-4 bg-gray-50 max-sm:px-2 max-md:px-3">
-        <div className="relative z-10 flex justify-between items-start flex-wrap gap-1 max-sm:justify-center">
-          {["image.png", "image (5).png", "image (6).png", "image (7).png"].map((src, i) => (
-            <div key={i} className={`flex flex-col ${i % 2 !== 0 ? "flex-col-reverse" : ""} items-center w-[180px] max-sm:w-[120px] max-md:w-[150px]`}>
-              <img src={`/assets/${src}`} className="w-32 h-32 object-cover rounded-xl shadow mb-2" />
+      <div className="relative py-8 px-4 bg-gray-50  max-sm:px-2 max-md:px-3">
+        <div className="relative z-10 flex justify-center gap-1 items-start flex-wrap  max-sm:justify-center">
+            <div  className= "flex-col-reverse flex items-center w-[180px] max-sm:w-[120px] max-md:w-[150px]">
+            <img
+                src="/assets/image.png"
+                className="w-40 h-40 object-cover"
+                alt="Photo of a dimly lit room with a computer interface terminal."
+              />
             </div>
-          ))}
+
+            <div  className= "flex-col-reverse flex items-center w-[180px] max-sm:w-[120px] max-md:w-[150px]">
+            <img
+                src="/assets/image (5).png"
+                className="w-40 h-40 object-cover mt-5  "
+                alt="Photo of a dimly lit room with a computer interface terminal."
+              />
+            </div>
+
+            <div  className= "flex-col-reverse flex items-center w-[180px] max-sm:w-[120px] max-md:w-[150px]">
+            <img
+                src="/assets/image (6).png"
+                className="w-40 h-40 object-cover "
+                alt="Photo of a dimly lit room with a computer interface terminal."
+              />
+            </div>
+
+            <div  className= "flex-col-reverse flex items-center w-[180px] max-sm:w-[120px] max-md:w-[150px]">
+            <img
+                src="/assets/image (7).png"
+                className="w-40 h-40 object-cover mt-5 "
+                alt="Photo of a dimly lit room with a computer interface terminal."
+              />
+            </div>
         </div>
       </div>
 
-      <section className="max-w-3xl mx-auto max-sm:px-4 max-md:px-5">
+      <section className="max-w-3xl mx-auto max-sm:px-4 max-md:px-5">        
         <article className="py-6 px-3 lg:px-0">
           <h1 className="font-bold text-2xl px-3 lg:px-0 gap-1 flex items-center justify-center">Gender-Based Violence (GBV) Statistics You Need to Know</h1>
             <div className="flex flex-col lg:flex-row">
@@ -216,7 +242,7 @@ export default function Home() {
                 </button>
             </div>
           </article>
-        {/* Section 1 */}
+      
         
         
         {/* Final Section */}
@@ -249,38 +275,40 @@ export default function Home() {
             </div>
           ))}
         </form>
-        <section>
-          <h2 className="font-serif text-3xl font-bold mb-12 space-y-4 text-center border-b border-gray-300 pb-4">
+      </section>
+
+      <section className="max-w-3xl mx-auto max-sm:px-4 max-md:px-6">
+          <h2 className="font-serif text-3xl font-bold mb-4 space-y-4 text-center pb-4">
             Read Educational Blogs On Abuse
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
           {/* Card 1 */}
-          <div className="bg-white rounded-2xl shadow-lg p-4 flex gap-4 items-start">
-            <img
-              src="/assets/Rectangle 14.png"
-              alt="Card Image"
-              className="w-24 h-24 object-cover rounded-xl"
-            />
-            <div className="flex flex-col justify-between w-full">
-              <h1 className="text-lg font-semibold text-gray-800">Common Myth About GBV And The Truth Behind Them</h1>
-              <p className="text-gray-600 mt-1 mb-3">
-                Gender-based violence (GBV) remains a global issue, yet many misconceptions still surround it.
-                 These myths often prevent survivors from seeking help and allow perpetrators to escape accountability.
-              </p>
-             
-              <div className="flex justify-start mt-4">
-              <button className="text-sm rounded-full text-black bg-blue-500  hover:bg-blue-100 transition px-4 py-2 inline-block">Keep Reading</button>
-            </div>
-              <p className="text-sm text-gray-500 mt-4">
-                        By<svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-500 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A4.992 4.992 0 0112 15c1.657 0 3.156.803 4.121 2.059M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg> <span className="uppercase tracking-wide">Robin Darnell</span>
-                        <time className="text-sm text-gray-500 block">Nov. 21, 2016</time>
-                      </p>
-            </div>
+          <div className=" border border-blue-300 rounded-2xl shadow-lg p-4 flex items-start">
+              <img
+                src="/assets/Rectangle 14.png"
+                alt="Card Image"
+                className="w-24 h-24 object-cover rounded-xl"
+              />
+              <div className="flex flex-col justify-between w-full">
+                <h1 className="text-lg font-semibold text-gray-800">Common Myth About GBV And The Truth Behind Them</h1>
+                <p className="text-gray-600 mt-1 mb-3">
+                  Gender-based violence (GBV) remains a global issue, yet many misconceptions still surround it.
+                            These myths often prevent survivors from seeking help and allow perpetrators to escape accountability.
+                </p>
+              
+                <div className="flex justify-start mt-4">
+                <button className="text-sm rounded-full text-black bg-blue-500  hover:bg-blue-100 transition px-4 py-2 inline-block">Keep Reading</button>
+              </div>
+                <p className="text-sm text-gray-500 mt-4">
+                          By<svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-500 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A4.992 4.992 0 0112 15c1.657 0 3.156.803 4.121 2.059M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg> <span className="uppercase tracking-wide">Robin Darnell</span>
+                          <time className="text-sm text-gray-500 block">Nov. 21, 2016</time>
+                        </p>
+              </div>
           </div>
           {/* Card 2 */}
-          <div className="bg-white rounded-2xl shadow-lg p-4 flex gap-4 items-start">
+          <div className="border border-blue-300 rounded-2xl shadow-lg p-4 flex items-start">
             <img
               src="/assets/Rectangle 15.png"
               alt="Card Image"
@@ -305,8 +333,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-        </section>
       </section>
+
+      
+       
+
     </>
   );
 }

@@ -1,6 +1,8 @@
 import {  } from 'react'
 import Header from './Header.tsx';
-import Home  from './Pages/Home.tsx';
+import Home  from './Pages/Home.tsx';  
+//import Pro  from './Pages/Pro.tsx';
+import Footer  from './Footer.tsx';
 import './index.css'
 
 function App() {
@@ -10,7 +12,8 @@ function App() {
     <>
      <Header/> 
      <Home/>
-      
+     {/*<Pro/> */}
+     <Footer/>    
     </>
   )
 }
