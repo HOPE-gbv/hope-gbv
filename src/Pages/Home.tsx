@@ -265,7 +265,8 @@ export default function Home() {
                     "How can I report an incident of gender-based violence?",
                     "Are there support services available for survivors of GBV?",
                     "How can I help prevent gender-based violence?",
-                    "Where can survivors find safe shelter or refuge?"
+                    "Where can survivors find safe shelter or refuge?",
+                    "What should I avoid saying to a survivor of GBV?"
                   ][index]}
                 </option>
                 <option value="1">One</option>
