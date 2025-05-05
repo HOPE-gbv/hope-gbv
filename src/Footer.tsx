@@ -1,13 +1,14 @@
 import {} from 'react';
 export default function Footer() {
     return (
-      <footer className="bg-black  p-2 mt-4">
+      <footer className=" bg-black">
         <div className="grid md:grid-cols-4 gap-8">
-          <div>
+          <div className='pl-10'>
             <h1 className="text-lg font-semibold mt-10 text-white">ABOUT US</h1>
-            <p className='text-white text-sm mb-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas aperiam facilis quasi sunt cupiditate hic repellat? Laborum architecto facilis neque odio, ullam inventore! Vitae excepturi dolor saepe adipisci sunt reiciendis.</p>
+            <p className='text-white text-sm mb-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas aperiam facilis quasi sunt cupiditate hic repellat? 
+              Laborum architecto facilis neque odio, ullam inventore! Vitae excepturi dolor saepe adipisci sunt reiciendis.</p>
           </div>
-          <div>
+          <div className='pl-40'>
             <h1 className="text-lg font-semibold  text-white mt-10">Details</h1>
             <ul className="space-y-2">
               <li><a href="/Specs" className=" text-white text-sm">Specs</a></li>
@@ -15,7 +16,7 @@ export default function Footer() {
               <li><a href="/Resources" className=" text-white text-sm">Resources</a></li>
             </ul>
           </div>
-          <div>
+          <div className='pl-20'>
             <h1 className="text-lg font-semibold text-white mt-10">Technology</h1>
             <ul className="space-y-2">
               <li><a href="/How it works" className=" text-white text-sm">How it works</a></li>
@@ -23,13 +24,13 @@ export default function Footer() {
               <li><a href="/Usage" className=" text-white text-sm">Usage</a></li>
             </ul>
           </div>
-          <div>
+          <div className='pr-15'>
             <h2 className="text-lg font-semibold tracking-tight text-white mt-10">Subscribe to our newsletter</h2>
-            <p className="mt-4 text-sm text-gray-300">
+            <p className="mt-2 text-sm text-gray-300">
               Nostrud amet eu ullamco nisi aute in ad minim nostrud adipisicing velit quis. Duis tempor incididunt
               dolore.
             </p>
-            <div className="mt-6 flex max-w-md gap-x-4">
+            <div className="flex max-w-md gap-x-4">
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
@@ -40,15 +41,15 @@ export default function Footer() {
                  required
                 placeholder="Enter your email"
                 autoComplete="email"
-                className="min-w-0 flex-auto rounded-md bg-white/3 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-blue-400 placeholder:text-white-500 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6"
+                className="mt-3 flex-auto rounded-md bg-white/3 px-15 py-2 text-base text-white outline-1 -outline-offset-1 outline-blue-400 placeholder:text-white-500 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6"
               />
-              <button
+            </div>
+            <button
                 type="submit"
-                className="flex-none rounded-md bg-blue-500 px-3.5  py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                className="flex-none rounded-md mt-3 bg-blue-500 px-28 py-2 text-sm font-semibold text-white shadow-xs hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
               >
                 Subscribe
               </button>
-            </div>
           </div>
           
 

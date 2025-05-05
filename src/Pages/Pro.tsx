@@ -4,9 +4,9 @@ import { ChevronDownIcon } from '@heroicons/react/16/solid'
 export default function Example() {
   return (
     <form>    
-      <div className="space-y-12 bg-blue-100">
+      <div className="space-y-12 ">
 
-      <div className=" pb-12 mb-10 mt-20">
+      <div className=" pt-20 px-8">
       <img
               src="/assets/image 8.png"
               className="w-400 h-100 object-cover justify-center"
@@ -14,13 +14,13 @@ export default function Example() {
             />
       </div>
 
-        <div className=" pb-12 mb-10 mt-20">
-        <p className="text-sm/6  text-gray-900  font-roboto text-center justify-center">The sole purpose of our pro bono services is to ensure that victims of GBV who are not financially capable would have have legal support, kindly note that our services are free and your information are confidential ,
+        <div className="#"> 
+        <p className="text-sm/6 px-4 mb-5 text-gray-900  font-roboto text-center justify-center">The sole purpose of our pro bono services is to ensure that victims of GBV who are not financially capable would have have legal support, kindly note that our services are free and your information are confidential ,
         we are available 24/7 to attend to you, please, fill the form below and our lawyers will contact you immediately</p>
-          <h1 className="mt-1 text-base font-semibold">Personal Information (please
+          <h1 className="mt-5 text-base font-semibold px-8">Personal Information (please
             , ensure your details are correct as we will be contacting you immediately).</h1>
 
-          <div className="mt-10 grid grid-cols-1 gap-x-6 justify-center gap-y-8 sm:grid-cols-6">
+          <div className="mt-4 grid grid-cols-1 gap-x-6 px-8 justify-center gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">
                 First name
@@ -31,7 +31,7 @@ export default function Example() {
                   name="first-name"
                   type="text"
                   autoComplete="given-name"
-                  className="block w-110 h-15 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1
+                  className="block w-110 h-15 rounded-md bg-white px-3 py-1.5  text-base text-gray-900 outline-1 -outline-offset-1
                    outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
                 />
               </div>
@@ -47,7 +47,7 @@ export default function Example() {
                   name="gender"
                   autoComplete="gender-name"
                   className="col-start-1 row-start-1 w-full h-15
-                   appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 
+                   appearance-none rounded-md bg-white py-1.5  px-10 pr-8 pl-3 
                    text-base outline-1 
                    text-gray-900  -outline-offset-1  outline-gray-300  
                    focus:outline-2 focus:-outline-offset-2
@@ -97,9 +97,39 @@ export default function Example() {
                 />
               </div>
             </div>
+
+            <div className="sm:col-span-2">
+              <label htmlFor="gender" className="block text-sm/6 font-medium text-gray-900">
+              Preferred contact method
+              </label>
+              <div className="mt-2 grid grid-cols-1 ">
+                <select
+                  id="gender"
+                  name="gender"
+                  autoComplete="gender-name"
+                  className="col-start-1 row-start-1 w-full h-15
+                   appearance-none rounded-md bg-white py-1.5  px-10 pr-8 pl-3 
+                   text-base outline-1 
+                   text-gray-900  -outline-offset-1  outline-gray-300  
+                   focus:outline-2 focus:-outline-offset-2
+                    focus:outline-blue-600 sm:text-sm/6"
+                >
+                  <option>-:-</option>
+                  <option>Call</option>
+                  <option>Email</option>
+                  <option>Text</option>
+                </select>
+                <ChevronDownIcon
+                  aria-hidden="true"
+                  className="pointer-events-none col-start-1 row-start-1 
+                  size-5 self-center justify-self-end text-gray-500 
+                  sm:size-4"
+                />
+              </div>
+            </div>
             </div>
 
-            <div className=" pb-12 mb-10 mt-20">
+            <div className=" pb-12 px-8">
           <h1 className="mt-1 text-base font-semibold">Case Information (please, give a detailed information about the case)</h1>
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -251,9 +281,9 @@ export default function Example() {
           </div>
         </div>
 
-          <div className=" space-y-5">
+          <div className=" space-y-5 px-8">
             <fieldset>
-              <div className="mt-6 space-y-6">
+              <div className="">
                 <div className="flex gap-3">
                   <div className="flex h-6 shrink-0 items-center">
                     <div className="group grid size-4 grid-cols-1">
@@ -297,14 +327,16 @@ export default function Example() {
             </fieldset>
           </div>
         </div>
-      </div>
-
-      <div className="flex flex-col sm:flex-row items-center mt-10 justify-center gap-4 max-sm:gap-2 max-md:gap-3">
+        
+      <div className="flex flex-col pb-40 sm:flex-row items-center justify-center gap-4 max-sm:gap-2 max-md:gap-3">
           <button  type="submit"
-            className="text-sm rounded-full bg-blue-500 text-black hover:bg-blue-100 transition px-4 py-2 inline-block max-sm:text-xs max-md:text-sm">
+            className="text-sm rounded-full bg-blue-500 text-black hover:bg-blue-300 transition px-4 py-2 inline-block max-sm:text-xs max-md:text-sm">
             Submit
           </button>
         </div>
+      </div>
+
+      
     </form>
   )
 }
