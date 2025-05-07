@@ -1,4 +1,4 @@
-# Shattering the Cycle: A Platform to End Gender-Based Violence
+#  H.O.P.E : A Platform to End Gender-Based Violence
 
 
 ![Project Banner](https://example.com/path/to/banner.png)
@@ -9,7 +9,7 @@
 
 ## 🌟 Mission
 
-**Shattering the Cycle** is a global movement and digital platform dedicated to ending gender-based violence through technology, community support, and access to justice. We aim to build a comprehensive ecosystem that raises awareness, amplifies voices, and takes concrete action against gender-based violence to ensure safety, equality, and justice for all.
+** H.O.P.E ** is a global movement and digital platform dedicated to ending gender-based violence through technology, community support, and access to justice. We aim to build a comprehensive ecosystem that raises awareness, amplifies voices, and takes concrete action against gender-based violence to ensure safety, equality, and justice for all.
 
 ## 🔍 Project Overview
 
@@ -39,7 +39,8 @@ This repository contains the codebase for a comprehensive platform that connects
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/shattering-the-cycle.git
+git clone  https://github.com/your-username/hope-gbv.git
+
 cd shattering-the-cycle
 
 # Install dependencies
@@ -53,22 +54,22 @@ cp .env.example .env
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the application running.
+Visit `http://localhost:5173` to see the application running.
 
 ## 🏗️ Project Structure
 
 ```
 ├── client/               # Frontend application
 ├── server/               # Backend API and services
-├── shared/               # Shared utilities and types
-├── docs/                 # Documentation
+<!-- ├── shared/               # Shared utilities and types -->
+<!-- ├── docs/                 # Documentation
 ├── scripts/              # Development and deployment scripts
-└── config/               # Configuration files
+└── config/               # Configuration files -->
 ```
 
 ## 🧪 Testing
 
-```bash
+<!-- ```bash
 # Run all tests
 npm test
 
@@ -77,7 +78,7 @@ npm test -- --suite=auth
 
 # Run with coverage report
 npm run test:coverage
-```
+``` -->
 
 ## 🤝 Contributing
 
@@ -93,7 +94,7 @@ We welcome contributions from developers, designers, content creators, legal exp
 
 ## 📜 Code of Conduct
 
-This project is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+This project is governed by our [Code of Conduct](). By participating, you are expected to uphold this code.
 
 ## 🔐 Security
 
