@@ -1,8 +1,9 @@
-import {  } from 'react'
+import {  } from 'react';
 import Header from './Header.tsx';
-//import Home  from './Pages/Home.tsx';  
-import Pro from './Pages/Pro-bono';
-//import Faq  from './Pages/Faq.tsx';
+import { Routes, Route } from "react-router-dom";
+import Home  from './Pages/Home.tsx';  
+import Pro from './Pages/Pro.bono';
+import Faq  from './Pages/Faq.tsx';
 import Footer  from './Footer.tsx';
 import './index.css'
 
@@ -11,11 +12,13 @@ function App() {
 
   return (
     <>
-     <Header/> 
-     {/*<Home/>*/}
-     <Pro/>
-     {/*<Faq/>*/}
-     <Footer/>    
+      <Header/>
+       <Routes>
+         <Route path="/Home" element={<Home />} />
+          <Route  path="Pro.bono"element= {<Pro />} />
+          <Route path="Faq" element={<Faq />} />
+       </Routes>
+      <Footer/>    
     </>
   )
 }
@@ -23,3 +26,5 @@ function App() {
 export default App
 
 
+  
+  
