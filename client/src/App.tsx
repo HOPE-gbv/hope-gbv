@@ -1,8 +1,8 @@
 import {  } from 'react'
 import Header from './Header.tsx';
 //import Home  from './Pages/Home.tsx';  
-//import Pro  from './Pages/Pro.tsx';
-import Faq  from './Pages/Faq.tsx';
+import Pro from './Pages/Pro-bono';
+//import Faq  from './Pages/Faq.tsx';
 import Footer  from './Footer.tsx';
 import './index.css'
 
@@ -12,9 +12,9 @@ function App() {
   return (
     <>
      <Header/> 
-     {/*<Home/>
-     <Pro/>*/}
-     <Faq/>
+     {/*<Home/>*/}
+     <Pro/>
+     {/*<Faq/>*/}
      <Footer/>    
     </>
   )
