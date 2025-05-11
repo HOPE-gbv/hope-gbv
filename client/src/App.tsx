@@ -6,7 +6,6 @@ import Pro from './Pages/Pro.bono';
 import Faq  from './Pages/Faq.tsx';
 import Footer  from './Footer.tsx';
 import './index.css'
-import Home from './Pages/Home.tsx';
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -16,8 +15,8 @@ function App() {
       <Header/>
        <Routes>
          <Route path="/Home" element={<Home />} />
-          <Route  path="Pro.bono"element= {<Pro />} />
-          <Route path="Faq" element={<Faq />} />
+          <Route  path="/pro-bono"element= {<Pro />} />
+          <Route path="/faq" element={<Faq />} />
        </Routes>
       <Footer/>    
     </>
