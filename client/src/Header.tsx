@@ -6,11 +6,11 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Home', href: '/Home' },
-  { name: 'About us', href: '/About us' },
-  { name: 'Pro bono lawyer', href: '/Pro' },
-  { name: 'Eye witness', href: '/Eye witness' },
+  { name: 'About us', href: '/' },
+  { name: 'Pro bono lawyer', href: '/Pro.bono' },
+  { name: 'Eye witness', href: '/' },
   { name: 'Community', href: '/community' },
-  { name: 'contact Us', href: '/contact Us' },
+  { name: 'contact Us', href: '/' },
   { name: 'Faq', href: '/Faq' },
 ]
 
@@ -23,10 +23,10 @@ export default function Example() {
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">H.O.P.E</span>
               <img
                 alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                src="/public/assets/H.O.P.E.png"
                 className="h-8 w-auto"
               />
             </a>
