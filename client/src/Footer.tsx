@@ -3,7 +3,7 @@ export default function Footer() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
       setMessage('Please enter a valid email address.');
