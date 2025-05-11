@@ -1,22 +1,37 @@
-import {} from 'react';
+import {useState} from 'react';
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (!email) {
+      setMessage('Please enter a valid email address.');
+      return;
+    }
+    // Simulate submission or send to API
+    console.log('Subscribed with:', email);
+    setMessage('Thank you for subscribing!');
+    setEmail('');
+  };
     return (
       <footer className=" bg-black ">
-        <div className="grid md:grid-cols-4 px-8 gap-8">
-          <div className='pl-10'>
+        <div className="grid md:grid-cols-4 px-8 gap-8 max-md:grid-cols-2 max-sm:grid-cols-1">
+          <div className='pl-10 max-md:pl-5 max-sm:pl-2'>
             <h1 className="text-lg font-semibold mt-10 text-white">ABOUT US</h1>
             <p className='text-white text-sm mb-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas aperiam facilis quasi sunt cupiditate hic repellat? 
-              Laborum architecto facilis neque odio, ullam inventore! Vitae excepturi dolor saepe adipisci sunt reiciendis.</p>
+              Laborum architecto facilis neque odio, ullam inventore! Vitae excepturi dolor saepe adipisci sunt reiciendis.
+              </p>
           </div>
-          <div className='pl-40'>
-            <h1 className="text-lg font-semibold  text-white mt-10">Details</h1>
+          <div className='pl-40 max-md:pl-10 max-sm:pl-2'>
+            <h1 className="text-lg font-semibold text-white mt-10">Details</h1>
             <ul className="space-y-2">
               <li><a href="/Specs" className=" text-white text-sm">Specs</a></li>
               <li><a href="/Tools" className=" text-white text-sm">Tools</a></li>
               <li><a href="/Resources" className=" text-white text-sm">Resources</a></li>
             </ul>
           </div>
-          <div className='pl-20'>
+          <div className='pl-20 max-md:pl-10 max-sm:pl-2'>
             <h1 className="text-lg font-semibold text-white mt-10">Technology</h1>
             <ul className="space-y-2">
               <li><a href="/How it works" className=" text-white text-sm">How it works</a></li>
@@ -24,38 +39,44 @@ export default function Footer() {
               <li><a href="/Usage" className=" text-white text-sm">Usage</a></li>
             </ul>
           </div>
-          <div className='pr-15'>
-            <h2 className="text-lg font-semibold tracking-tight text-white mt-10">Subscribe to our newsletter</h2>
-            <p className="mt-2 text-sm text-gray-300">
-              Nostrud amet eu ullamco nisi aute in ad minim nostrud adipisicing velit quis. Duis tempor incididunt
-              dolore.
-            </p>
-            <div className="flex max-w-md gap-x-4">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                 required
-                placeholder="Enter your email"
-                autoComplete="email"
-                className="mt-3 flex-auto rounded-md bg-white/3 px-15 py-2 text-base text-white outline-1 -outline-offset-1 outline-blue-400 placeholder:text-white-500 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6"
-              />
-            </div>
+          
+          <div className='pr-15 max-md:pl-10 max-sm:pl-2'>
+          <h2 className="text-lg font-semibold tracking-tight text-white mt-10">Subscribe to our newsletter</h2>
+          <p className="mt-2 text-sm text-gray-300">
+            Nostrud amet eu ullamco nisi aute in ad minim nostrud adipisicing velit quis. Duis tempor incididunt dolore.
+          </p>
+          <form onSubmit={handleSubscribe} className="flex flex-col max-w-md mt-3">
+            <label htmlFor="email-address" className="sr-only">Email address</label>
+            <input
+              id="email-address"
+              name="email"
+              type="email"
+              required
+              placeholder="Enter your email"
+              autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="rounded-md bg-white/5 px-4 py-2 text-base text-white 
+                 outline-1 outline-offset-0 outline-blue-400 
+                placeholder:text-gray-400 focus:outline-2 focus:outline-offset-2 
+                focus:outline-blue-500"
+            />
             <button
-                type="submit"
-                className="flex-none rounded-md mt-3 bg-blue-500 px-28 py-2 text-sm font-semibold text-white shadow-xs hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
-              >
-                Subscribe
-              </button>
-          </div>
+              type="submit"
+              className="rounded-md mt-3 bg-blue-500 px-1 py-2 text-sm font-semibold text-white hover:bg-blue-400 focus:outline-none"
+            >
+              Subscribe
+            </button>
+            {message && (
+              <p className="mt-2 text-sm text-green-400">{message}</p>
+            )}
+          </form>
+        </div>
           
 
         </div>
   
-        <div className="mt-8 flex flex-wrap justify-center space-x-6">
+        <div className="mt-8 flex flex-wrap justify-center space-x-6 max-sm:space-x-2">
           <a href="https://facebook.com" className="text-gray-400 hover:text-white">
             <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" className="fill-current beatFade" viewBox="0 0 512 512">
               <path  d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/>
@@ -78,9 +99,9 @@ export default function Footer() {
           </a>
         </div>
   
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center px-4 max-sm:px-2">
           <p className="text-white">&copy; 2025 H.O.P.E. All rights reserved.</p>
-          <nav className="mt-4 space-x-4">
+          <nav className="mt-4 space-x-4 max-sm:space-x-2">
             <a href="https://privacy-policy.com" className="text-white">Privacy Policy</a>
             <a href="/Terms of Service" className=" text-white">Terms of Service</a>
             <a href="/Support" className=" text-white">Support</a>
