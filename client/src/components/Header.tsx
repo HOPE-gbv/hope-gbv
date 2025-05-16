@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom'
 
 const navigation = [
   { name: 'Home', to: '/' },
-  { name: 'About us', to: '/' },
+  { name: 'About us', to: '/about' },
   { name: 'Pro bono lawyer', to: '/pro-bono' },
   { name: 'Eye witness', to: '/' },
   { name: 'Community', to: '/community' },
   { name: 'contact Us', to: '/' },
-  { name: 'Faq', to: '/Faq' },
+  { name: 'Faq', to: '/faq' },
 ]
 
 export default function Example() {
