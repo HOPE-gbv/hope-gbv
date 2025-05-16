@@ -28,7 +28,7 @@ const Donate = () => {
       ],
     },
     publicKey,
-    text: "Pay Now",
+    text: "Donate Now",
     onSuccess: () =>
       alert("Thanks for donating to us! we do not take it for granted!!"),
     onClose: () => alert("Wait! You need to donate, don't go!!!!"),

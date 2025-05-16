@@ -150,9 +150,7 @@ const DonationPage = () => {
             </Card>
           </div>
         </div>
-        
-        {/* <ImpactSection />
-        <TestimonialsSection /> */}
+       
       </div>
     </div>
   );
