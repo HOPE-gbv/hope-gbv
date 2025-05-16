@@ -45,7 +45,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggle = (index : number) => {
-    // @ts-ignore
+    // @ts-expect-error a type error
     setOpenIndex( index === openIndex ? null : index);
   };
 

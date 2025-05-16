@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 
 const navigation = [
-  { name: 'Home', to: '/Home' },
+  { name: 'Home', to: '/' },
   { name: 'About us', to: '/' },
   { name: 'Pro bono lawyer', to: '/pro-bono' },
   { name: 'Eye witness', to: '/' },
@@ -67,7 +67,7 @@ export default function Example() {
                 <span className="sr-only">Your Company</span>
                 <img
                   alt=""
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                  src="/assets/H.O.P.E.png"
                   className="h-8 w-auto"
                 />
               </a>

@@ -49,6 +49,8 @@ export default function Pro() {
       
     };
   return (
+    <div className="container mx-auto p-4 md:p-6 lg:p-8">
+
     <form onSubmit={handleSubmit} className="space-y-12 px-4 max-sm:px-2 max-md:px-6 py-10 p-8" >    
       <div className="space-y-12 ">
 
@@ -454,5 +456,6 @@ export default function Pro() {
 
       
     </form>
+    </div>
   )
 }
