@@ -34,6 +34,7 @@ import Header from './Header.tsx';
 import Footer  from './Footer.tsx';
 import Home from './Pages/Home';
 import Donate from './Pages/Donation.tsx';
+import CommunityPage from './Pages/community.tsx';
 
 
 
@@ -42,6 +43,7 @@ function App () {
   
   <>
     <Header/>
+    <CommunityPage />
     <BrowserRouter>
     <Route path='/' element={<Home />} />
     <Route path='donate' element={<Donate />} />
