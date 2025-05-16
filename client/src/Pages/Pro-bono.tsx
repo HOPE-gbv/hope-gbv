@@ -30,7 +30,8 @@ export default function Pro() {
     const [shelter, setShelter]= useState<string>('');
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const Data:   FormData = {
+      
+      const Data = {
         firstname,
         gender,
         email,
@@ -48,7 +49,7 @@ export default function Pro() {
       
     };
   return (
-    <form onSubmit={handleSubmit} className="space-y-12 px-4 max-sm:px-2 max-md:px-6 py-10" >    
+    <form onSubmit={handleSubmit} className="space-y-12 px-4 max-sm:px-2 max-md:px-6 py-10 p-8" >    
       <div className="space-y-12 ">
 
       <div className=" pt-20 px-8">

@@ -1,17 +1,18 @@
-'use client'
+
 
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
 
 const navigation = [
-  { name: 'Home', href: '/Home' },
-  { name: 'About us', href: '/' },
-  { name: 'Pro bono lawyer', href: '/Pro.bono' },
-  { name: 'Eye witness', href: '/' },
-  { name: 'Community', href: '/community' },
-  { name: 'contact Us', href: '/' },
-  { name: 'Faq', href: '/Faq' },
+  { name: 'Home', to: '/Home' },
+  { name: 'About us', to: '/' },
+  { name: 'Pro bono lawyer', to: '/pro-bono' },
+  { name: 'Eye witness', to: '/' },
+  { name: 'Community', to: '/community' },
+  { name: 'contact Us', to: '/' },
+  { name: 'Faq', to: '/Faq' },
 ]
 
 export default function Example() {
@@ -43,19 +44,19 @@ export default function Example() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
+              <Link key={item.name} to={item.to} className="text-sm/6 font-semibold text-gray-900">
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-3">
-                <a
-                href="#"
+                <Link
+                to="/donate"
                 className="rounded-sm broder border-r-blue-400  px-4 py-2
                  text-sm font-semibold text-blue-500 shadow-sm hover:bg-blue-100"
               >
                 Donate
-              </a>
+              </Link>
               </div>
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -85,7 +86,7 @@ export default function Example() {
                   {navigation.map((item) => (
                     <a
                       key={item.name}
-                      href={item.href}
+                      href={item.to}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       {item.name}

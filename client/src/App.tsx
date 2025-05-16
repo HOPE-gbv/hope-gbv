@@ -1,11 +1,13 @@
 import {  } from 'react';
-import Header from './Header.tsx';
+import Header from './components/Header.tsx';
 import { Routes, Route } from "react-router-dom";
 import Home  from './Pages/Home.tsx';  
 import Pro from './Pages/Pro-bono.tsx';
 import Faq  from './Pages/Faq.tsx';
-import Footer  from './Footer.tsx';
+import Footer  from './components/Footer.tsx';
 import './index.css'
+// import Donate from './Pages/Donation.tsx';
+import DonationPage from './Pages/donate.tsx';
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -17,6 +19,7 @@ function App() {
          <Route path="/" element={<Home />} />
           <Route  path="/pro-bono"element= {<Pro />} />
           <Route path="/faq" element={<Faq />} />
+          <Route path="/donate" element={<DonationPage />} />
        </Routes>
       <Footer/>    
     </>
