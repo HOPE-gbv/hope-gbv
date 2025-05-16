@@ -1,20 +1,20 @@
 import {useState} from 'react';
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
-type FormData = {
-  firstname: string;
-  gender: string;
-  email: string;
-  phonenumber: string;
-  contactmethod: string;
-  experienced: string;
-  date: string;
-  danger: string;
-  location: string;
-  state: string;
-  authority: string;
-  shelter: string;
-}
+// type FormData = {
+//   firstname: string;
+//   gender: string;
+//   email: string;
+//   phonenumber: string;
+//   contactmethod: string;
+//   experienced: string;
+//   date: string;
+//   danger: string;
+//   location: string;
+//   state: string;
+//   authority: string;
+//   shelter: string;
+// }
 export default function Pro() {
   const [email, setEmail] = useState <string>('');
     const [gender, setGender] = useState <string>('');
@@ -31,21 +31,21 @@ export default function Pro() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       
-      const Data = {
-        firstname,
-        gender,
-        email,
-        phonenumber,
-        contactmethod,
-        experienced,
-        date,
-        danger,
-        location,
-        state,
-        authority,
-        shelter,
+      // const Data = {
+      //   firstname,
+      //   gender,
+      //   email,
+      //   phonenumber,
+      //   contactmethod,
+      //   experienced,
+      //   date,
+      //   danger,
+      //   location,
+      //   state,
+      //   authority,
+      //   shelter,
        
-      };
+      // };
       
     };
   return (
