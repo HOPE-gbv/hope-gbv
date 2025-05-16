@@ -93,7 +93,7 @@ export default function Example() {
                     </a>
                   ))}
                    <a
-                href="#"
+                href="/donate"
                 className="rounded-sm broder border-r-blue-400  px-4 py-2
                  text-sm font-semibold text-blue-500 shadow-sm hover:bg-blue-100"
               >
