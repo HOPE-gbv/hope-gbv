@@ -44,8 +44,9 @@ const faqs = [
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggle = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggle = (index : number) => {
+    // @ts-ignore
+    setOpenIndex( index === openIndex ? null : index);
   };
 
   return (
