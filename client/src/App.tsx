@@ -14,7 +14,7 @@ function App() {
       <Header/>
        <Routes>
          <Route index  element={<Home />} />
-          <Route  path="Pro.bono"element= {<Pro />} />
+          <Route  path="Pro-bono"element= {<Pro />} />
           <Route path="Faq" element={<Faq />} />
        </Routes>
       <Footer/>    
