@@ -9,15 +9,6 @@ import Footer  from './Footer.tsx';
 import './index.css'
 
 function App() {
-  /*const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 4000); // 4 seconds before homepage shows
-
-    return () => clearTimeout(timeout);
-  }, []);*/
 
   return (
     <>
