@@ -5,12 +5,12 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Home', href: '/Home' },
-  { name: 'About us', href: '/' },
+  { name: 'Home', href: '/' },
+  { name: 'About us', href: '#' },
   { name: 'Pro bono lawyer', href: '/Pro.bono' },
-  { name: 'Eye witness', href: '/' },
-  { name: 'Community', href: '/community' },
-  { name: 'contact Us', href: '/' },
+  { name: 'Eye witness', href: '#' },
+  { name: 'Community', href: '#' },
+  { name: 'contact Us', href: '#' },
   { name: 'Faq', href: '/Faq' },
 ]
 
@@ -26,8 +26,8 @@ export default function Example() {
               <span className="sr-only">H.O.P.E</span>
               <img
                 alt=""
-                src="/public/assets/H.O.P.E.png"
-                className="h-8 w-auto"
+                src="/assets/H.O.P.E.png"
+                className="h-20 w-auto"
               />
             </a>
           </div>
@@ -63,11 +63,11 @@ export default function Example() {
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
+                <span className="sr-only">H.O.P.E</span>
                 <img
                   alt=""
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                  className="h-8 w-auto"
+                  src="/assets/H.O.P.E.png"
+                  className="h-20 w-auto"
                 />
               </a>
               <button

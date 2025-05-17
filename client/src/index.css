@@ -1,1 +1,30 @@
 @import "tailwindcss";
+.hope-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(253, 251, 249); 
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.hope-word {
+  font-size: 2rem;
+  margin: 0.5rem;
+}
+.hope-letter {
+  font-style: italic;
+  font-weight: lighter;
+  color: #3f13ce; /* example: deep red */
+}
+.hope-text {
+  color: #5841f3;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+  
