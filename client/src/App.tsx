@@ -1,7 +1,6 @@
 import { } from "react";
 import Header from './Header.tsx';
-import { Routes, Route } from "react-router-dom";
-//import Loading  from './Loading.tsx';  
+import { Routes, Route } from "react-router-dom"; 
 import Home  from './Pages/Home.tsx';  
 import Pro from './Pages/Pro.bono';
 import Faq  from './Pages/Faq.tsx';
@@ -12,7 +11,6 @@ function App() {
 
   return (
     <>
-      {/*isLoading ? <Loading /> : <Home />*/}
       <Header/>
        <Routes>
          <Route index  element={<Home />} />
