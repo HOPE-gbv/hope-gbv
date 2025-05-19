@@ -1,9 +1,17 @@
-import { FaTelegram, FaWhatsapp, FaComments } from 'react-icons/fa';
+import { FaTelegram, FaWhatsapp, FaComments, FaFacebook, FaInstagram, FaTwitter, FaTiktok } from 'react-icons/fa';
 
 function Community() {
   const telegramLink = "https://t.me/+ggTLaOM6gCZjZGNk";
   const whatsappLink = "https://chat.whatsapp.com/B7hAvRzlvZF0EtisQ7GaRJ"; 
-  
+  // const socials = [ 
+  //   { name: "Telegram", icon: <FaTelegram />, link: telegramLink },
+  //   { name: "WhatsApp", icon: <FaWhatsapp />, link: whatsappLink },
+  //   // { name: "Chat a Councilor", icon: <FaComments />, onClick: handleCouncilorChat },
+  //   {name: "Facebook", icon: <FaFacebook />, link: "https://www.facebook.com/H.O.P.E" },
+  //   {name: "Instagram", icon: <FaInstagram />, link: "https://www.instagram.com/H.O.P.E" },
+  //   {name: "Twitter", icon: <FaTwitter />, link: "https://twitter.com/H.O.P.E" },
+  //   {name: "TikTok", icon: <FaTiktok />, link: "https://www.tiktok.com/@H.O.P.E" },
+  // ];
 
   const councilors = [
     { name: "Councilor sulaiman", number: "+2348038390300" },
@@ -52,7 +60,7 @@ function Community() {
                   rel="noopener noreferrer"
                   className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-full transition-colors"
                 >
-                  Join Telegram
+                  Join {}
                 </a>
               </div>
             </div>
