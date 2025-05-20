@@ -2,10 +2,14 @@
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "/index.html",
-            "branches": [
-                "main"
-            ]
+            "destination": "/index.html"
         }
-    ]
+    ],
+    "git": {
+        "deploymentEnabled": {
+            "experiment-*": false,
+            "*-dev": false,
+            "main": false
+        }
+    }
 }

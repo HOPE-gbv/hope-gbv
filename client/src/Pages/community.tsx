@@ -1,4 +1,7 @@
-import { FaTelegram, FaWhatsapp, FaComments, FaFacebook, FaInstagram, FaTwitter, FaTiktok } from 'react-icons/fa';
+import { FaTelegram, FaWhatsapp, FaComments,
+  //  FaFacebook,
+  //   FaInstagram, FaTwitter, FaTiktok 
+  } from 'react-icons/fa';
 
 function Community() {
   const telegramLink = "https://t.me/+ggTLaOM6gCZjZGNk";
