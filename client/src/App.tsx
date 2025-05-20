@@ -12,7 +12,7 @@ import Community from './Pages/community.tsx';
 import About from './Pages/about.tsx';
 
 function App() {
-  //const [count, setCount] = useState(0)
+  
 
   return (
     <>
