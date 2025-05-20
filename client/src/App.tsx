@@ -16,6 +16,7 @@ function App() {
          <Route index  element={<Home />} />
           <Route  path="Pro.bono"element= {<Pro />} />
           <Route path="Faq" element={<Faq />} />
+          
        </Routes>
       <Footer/>    
     </>
