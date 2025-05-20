@@ -3,8 +3,8 @@ import {} from 'react';
 export default function Home() {
   return (
     <>
-      <article className="max-w-3xl mx-auto px-6 text-center mb-10 mt-20 max-sm:px-4 max-md:px-5">
-        <h1 className="font-bold text-2xl sm:text-3xl leading-tight mt-0 mb-6 items-stretch max-sm:text-xl max-md:text-2xl">
+      <article className="max-w-3xl mx-auto px-6 text-center max-sm:px-4 max-md:px-5">
+        <h1 className="font-bold text-2xl sm:text-3xl leading-tight mt-30 items-stretch max-sm:text-xl max-md:text-2xl">
           Shattering the Cycle of Violence: A Global Movement to End Gender-Based Abuse and Ensure Safety, Equality, and Justice for All
         </h1>
         <h2 className="font-light text-lg sm:text-xl leading-relaxed mt-0 mb-6 items-stretch max-sm:text-base max-md:text-lg">
@@ -242,115 +242,65 @@ export default function Home() {
                 </button>
             </div>
           </article>
-      
-        
-        
-        {/* Final Section */}
-        <form>
-          <div className="sm:col-span-2">
-            <h1 className="font-bold text-center px-3 lg:px-0 flex items-center mb-6 justify-center max-sm:text-lg max-md:text-xl">
-              Get Answers to Frequently Asked Questions
-            </h1>
-          </div>
-
-          {[1, 2, 3, 4, 5].map((_, index) => (
-            <div key={index} className="flex justify-center">
-              <select
-                className="w-240 h-15 rounded-lg border border-blue-400 bg-white px-4 py-2 text-base text-gray-900 shadow-sm focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300 mb-3 max-sm:text-sm max-md:text-base"
-                defaultValue=""
-              >
-                <option disabled value="">
-                  {[
-                    "What should I do if I or someone I know is experiencing GBV?",
-                    "How can I report an incident of gender-based violence?",
-                    "Are there support services available for survivors of GBV?",
-                    "How can I help prevent gender-based violence?",
-                    "Where can survivors find safe shelter or refuge?",
-                    "What should I avoid saying to a survivor of GBV?"
-                  ][index]}
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          ))}
-        </form>
       </section>
 
-      <section className="max-w-5xl mx-auto px-4 py-12">
-  <h2 className="font-serif text-4xl font-bold text-center mb-10">
-    Read Educational Blogs On Abuse
-  </h2>
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {/* Blog Card 1 */}
-    <article className="flex gap-4 border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition duration-300 p-6">
-      <img
-        src="/assets/Rectangle 14.png"
-        alt="Common Myth"
-        className="w-28 h-28 rounded-xl object-cover"
-      />
-      <div className="flex flex-col justify-between w-full">
-        <div>
-          <h3 className="text-xl font-semibold text-gray-800">
-            Common Myth About GBV And The Truth Behind Them
-          </h3>
-          <p className="text-gray-600 text-sm mt-2">
-            Gender-based violence (GBV) remains a global issue, yet many misconceptions still surround it. These myths often prevent survivors from seeking help and allow perpetrators to escape accountability.
-          </p>
-        </div>
-        <div className="flex items-center justify-between mt-4">
-          <button className="text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full transition">
-            Keep Reading
-          </button>
-          <div className="text-xs text-right text-gray-500">
-            <div className="flex items-center gap-1">
-              <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A4.992 4.992 0 0112 15c1.657 0 3.156.803 4.121 2.059M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span className="uppercase tracking-wide">Robin Darnell</span>
+      <section className="max-w-3xl mx-auto max-sm:px-4 max-md:px-6">
+          <h2 className="font-serif text-3xl font-bold mb-4 space-y-4 text-center pb-4">
+            Read Educational Blogs On Abuse
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
+          {/* Card 1 */}
+          <div className=" border border-blue-300 rounded-2xl shadow-lg p-4 flex items-start">
+              <img
+                src="/assets/Rectangle 14.png"
+                alt="Card Image"
+                className="w-24 h-24 object-cover rounded-xl"
+              />
+              <div className="flex flex-col justify-between w-full">
+                <h1 className="text-lg font-semibold text-gray-800">Common Myth About GBV And The Truth Behind Them</h1>
+                <p className="text-gray-600 mt-1 mb-3">
+                  Gender-based violence (GBV) remains a global issue, yet many misconceptions still surround it.
+                            These myths often prevent survivors from seeking help and allow perpetrators to escape accountability.
+                </p>
+              
+                <div className="flex justify-start mt-4">
+                <button className="text-sm rounded-full text-black bg-blue-500  hover:bg-blue-100 transition px-4 py-2 inline-block">Keep Reading</button>
+              </div>
+                <p className="text-sm text-gray-500 mt-4">
+                          By<svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-500 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A4.992 4.992 0 0112 15c1.657 0 3.156.803 4.121 2.059M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg> <span className="uppercase tracking-wide">Robin Darnell</span>
+                          <time className="text-sm text-gray-500 block">Nov. 21, 2016</time>
+                        </p>
+              </div>
+          </div>
+          {/* Card 2 */}
+          <div className="border border-blue-300 rounded-2xl shadow-lg p-4 flex items-start">
+            <img
+              src="/assets/Rectangle 15.png"
+              alt="Card Image"
+              className="w-24 h-24 object-cover rounded-xl"
+            />
+            <div className="flex flex-col justify-between w-full">
+              <h1 className="text-lg font-semibold text-gray-800">A Survivor’s Guide to Recovery</h1>
+              <p className="text-gray-600 mt-1 mb-3">
+                Surviving gender-based violence is a courageous step, but the journey to healing takes time, patience, and support.
+                 Recovery is not linear, and every survivor’s experience is unique.
+              </p>
+             
+              <div className="flex justify-start mt-4">
+              <button className="text-sm rounded-full text-black bg-blue-500  hover:bg-blue-100 transition px-4 py-2 inline-block">Keep Reading</button>
             </div>
-            <time className="block">Nov. 21, 2016</time>
+              <p className="text-sm text-gray-500 mt-4">
+                        By<svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-500 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A4.992 4.992 0 0112 15c1.657 0 3.156.803 4.121 2.059M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg> <span className="uppercase tracking-wide">Robin Darnell</span>
+                        <time className="text-sm text-gray-500 block">Nov. 21, 2016</time>
+                      </p>
+            </div>
           </div>
         </div>
-      </div>
-    </article>
-
-    {/* Blog Card 2 */}
-    <article className="flex gap-4 border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition duration-300 p-6">
-      <img
-        src="/assets/Rectangle 15.png"
-        alt="Survivor Guide"
-        className="w-28 h-28 rounded-xl object-cover"
-      />
-      <div className="flex flex-col justify-between w-full">
-        <div>
-          <h3 className="text-xl font-semibold text-gray-800">
-            A Survivor’s Guide to Recovery
-          </h3>
-          <p className="text-gray-600 text-sm mt-2">
-            Surviving gender-based violence is a courageous step, but the journey to healing takes time, patience, and support. Recovery is not linear, and every survivor’s experience is unique.
-          </p>
-        </div>
-        <div className="flex items-center justify-between mt-4">
-          <button className="text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full transition">
-            Keep Reading
-          </button>
-          <div className="text-xs text-right text-gray-500">
-            <div className="flex items-center gap-1">
-              <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A4.992 4.992 0 0112 15c1.657 0 3.156.803 4.121 2.059M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span className="uppercase tracking-wide">Robin Darnell</span>
-            </div>
-            <time className="block">Nov. 21, 2016</time>
-          </div>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-
+      </section>
 
       
        

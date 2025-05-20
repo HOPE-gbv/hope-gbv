@@ -2,7 +2,7 @@ import {  } from 'react';
 import Header from './components/Header.tsx';
 import { Routes, Route } from "react-router-dom";
 import Home  from './Pages/Home.tsx';  
-import Pro from './Pages/Pro-bono.tsx';
+import Pro from './Pages/Pro.bono.tsx';
 import Faq  from './Pages/Faq.tsx';
 import Footer  from './components/Footer.tsx';
 import './index.css'
@@ -19,7 +19,7 @@ function App() {
       <Header/>
        <Routes>
          <Route path="/" element={<Home />} />
-          <Route  path="/pro-bono"element= {<Pro />} />
+          <Route  path="/pro.bono"element= {<Pro />} />
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/community" element={<Community />} />
