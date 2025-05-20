@@ -7,5 +7,12 @@
                 "main"
             ]
         }
-    ]
+    ],
+    "git": {
+        "deploymentEnabled": {
+            "experiment-*": false,
+            "*-dev": false,
+            "main": false
+        }
+    }
 }
