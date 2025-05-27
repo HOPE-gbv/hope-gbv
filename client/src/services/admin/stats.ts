@@ -3,9 +3,9 @@ import axios from 'axios';
 const API_BASE_URL = '/api/admin/stats';
 
 export const statsService = {
-  getDashboardStats: async () => {
+  getDashboardStats: async (period: string) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/dashboard`);
+      const response = await axios.get(`${API_BASE_URL}/dashboard?period=${period}`);
       return response.data;
     } catch (error) {
       console.error('Error fetching dashboard stats:', error);

@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
-import App from './App.tsx'; // Import App component
+import App from './App.tsx';
 import AdminLayout from './components/layouts/AdminLayout.tsx';
 import LoginPage from './Pages/admin/login.tsx';
 import CasesPage from './Pages/admin/cases.tsx';
@@ -8,13 +8,14 @@ import DashboardPage from './Pages/admin/dashboard/index.tsx';
 import DocumentsPage from './Pages/admin/dashboard/documents.tsx'; 
 import MatchingPage from './Pages/admin/matching/index.tsx'; 
 import Home from './Pages/Home.tsx';
-import Pro from './Pages/Pro-bono.tsx';
+import ProbonoPage from './Pages/pro-bono.tsx';
 import Faq from './Pages/Faq.tsx';
 import DonationPage from './Pages/donate.tsx';
 import Community from './Pages/community.tsx';
 import About from './Pages/about.tsx';
 import './index.css'; 
 import Contact from './Pages/contact.tsx';
+import EyeWitnessPage from './Pages/eye-witness.tsx';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'pro-bono',
-        element: <Pro />,
+        element: <ProbonoPage />,
       },
       {
         path: 'about',
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: 'donate',
         element: <DonationPage />,
+      },
+      {
+        path: 'eye-witness',
+        element: <EyeWitnessPage />,
       },
     ],
   },

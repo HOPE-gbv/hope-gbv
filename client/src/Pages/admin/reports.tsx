@@ -81,14 +81,62 @@ export default function AdminReportsPage() {
   const [selectedMetrics, setSelectedMetrics] = useState<string[]>([]);
 
   useEffect(() => {
+    const dummyStats: Stats = {
+      newCases: 120,
+      resolvedCases: 95,
+      criticalCases: 8,
+      averageResponseTime: "2 hours 15 minutes",
+      casesByType: {
+        "Domestic Violence": 50,
+        "Sexual Assault": 30,
+        "Stalking": 20,
+        "Child Abuse": 10,
+        "Harassment": 10,
+      },
+      casesByRegion: {
+        "Lagos": 40,
+        "Abuja": 30,
+        "Rivers": 20,
+        "Kano": 15,
+        "Oyo": 15,
+      },
+      casesByLawyer: {
+        "John Doe": 25,
+        "Jane Smith": 20,
+        "Peter Jones": 15,
+        "Alice Brown": 10,
+      },
+      casesByClient: {
+        "Client A": 10,
+        "Client B": 8,
+        "Client C": 7,
+      },
+      casesBySeverity: {
+        "High": 15,
+        "Medium": 40,
+        "Low": 65,
+      },
+      caseworkerPerformance: [
+        { name: "Sarah Connor", casesHandled: 45, avgResponseTime: "1 hour 30 minutes" },
+        { name: "Kyle Reese", casesHandled: 38, avgResponseTime: "1 hour 45 minutes" },
+        { name: "T-800", casesHandled: 50, avgResponseTime: "1 hour 15 minutes" },
+      ],
+      recentActivity: [
+        { action: "New case added: DV-2023-001", time: "2 hours ago" },
+        { action: "Case resolved: SA-2023-005", time: "1 day ago" },
+        { action: "Report generated: Monthly Performance", time: "3 days ago" },
+      ],
+    };
+
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const fetchedStats = await statsService.getDashboardStats(); // Assuming this can take period as a param
-        setStats(fetchedStats);
+        const fetchedStats = await statsService.getDashboardStats(period);
+        setStats(fetchedStats || dummyStats); // Use dummyStats if fetchedStats is null
       } catch (err) {
-        setError("Failed to load report data. Please try again.");
+        setError("Failed to load report data. Using dummy data.");
         console.error("Error fetching report stats:", err);
+        setStats(dummyStats); // Use dummyStats on error
       } finally {
         setLoading(false);
       }
@@ -117,7 +165,7 @@ export default function AdminReportsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-700"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
       </div>
     );
   }
@@ -141,11 +189,11 @@ export default function AdminReportsPage() {
 
   // Prepare chart data
   const casesByTypeData = {
-    labels: Object.keys(stats.casesByType),
+    labels: Object.keys(stats.casesByType || {}),
     datasets: [
       {
         label: "Number of Cases",
-        data: Object.values(stats.casesByType),
+        data: Object.values(stats.casesByType || {}),
         backgroundColor: [
           "rgba(153, 102, 255, 0.6)",
           "rgba(255, 99, 132, 0.6)",
@@ -168,11 +216,11 @@ export default function AdminReportsPage() {
   };
 
   const casesByRegionData = {
-    labels: Object.keys(stats.casesByRegion),
+    labels: Object.keys(stats.casesByRegion || {}),
     datasets: [
       {
         label: "Number of Cases",
-        data: Object.values(stats.casesByRegion),
+        data: Object.values(stats.casesByRegion || {}),
         backgroundColor: "rgba(153, 102, 255, 0.6)",
         borderColor: "rgba(153, 102, 255, 1)",
         borderWidth: 1,
@@ -181,11 +229,11 @@ export default function AdminReportsPage() {
   };
 
   const casesBySeverityData = {
-    labels: Object.keys(stats.casesBySeverity),
+    labels: Object.keys(stats.casesBySeverity || {}),
     datasets: [
       {
         label: "Number of Cases",
-        data: Object.values(stats.casesBySeverity),
+        data: Object.values(stats.casesBySeverity || {}),
         backgroundColor: [
           "rgba(255, 99, 132, 0.6)",
           "rgba(255, 159, 64, 0.6)",
@@ -269,7 +317,7 @@ export default function AdminReportsPage() {
         <div className="flex space-x-2">
           <Dialog open={showNewReportDialog} onOpenChange={setShowNewReportDialog}>
             <DialogTrigger asChild>
-              <Button className="bg-purple-600 hover:bg-purple-700">
+              <Button className="bg-blue-600 hover:bg-blue-700">
                 <Plus className="mr-2 h-4 w-4" />
                 Generate Report
               </Button>
@@ -431,7 +479,7 @@ export default function AdminReportsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Cases</CardTitle>
-            <FileText className="h-4 w-4 text-purple-600" />
+            <FileText className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.newCases}</div>
@@ -708,7 +756,7 @@ export default function AdminReportsPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-8">
-                {stats.caseworkerPerformance.map((worker: { name: string; casesHandled: number; avgResponseTime: string }, index: number) => (
+                {(stats.caseworkerPerformance || []).map((worker: { name: string; casesHandled: number; avgResponseTime: string }, index: number) => (
                   <div key={index} className="space-y-2">
                     <div className="flex items-center justify-between">
                       <div>
@@ -724,7 +772,7 @@ export default function AdminReportsPage() {
                     </div>
                     <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-purple-600 rounded-full"
+                        className="h-full bg-blue-600 rounded-full"
                         style={{ width: `${(worker.casesHandled / 50) * 100}%` }}
                       ></div>
                     </div>

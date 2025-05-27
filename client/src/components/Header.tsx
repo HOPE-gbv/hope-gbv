@@ -9,14 +9,14 @@ const navigation = [
   { name: 'Home', to: '/' },
   { name: 'About us', to: '/about' },
   { name: 'Pro bono lawyer', to: '/pro-bono' },
-  { name: 'Eye witness', to: '/' },
+  { name: 'Eye witness', to: '/eye-witness' },
   { name: 'Donate', to: '/donate' },
   { name: 'Community', to: '/community' },
   { name: 'contact Us', to: '/contact' },
   { name: 'Faq', to: '/faq' },
 ]
 
-export default function Example() {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (

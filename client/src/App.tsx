@@ -1,6 +1,5 @@
-import Header from './components/Header.tsx';
-<<<<<<< HEAD
 import Footer from './components/Footer.tsx';
+import Header from './components/Header.tsx';
 import './index.css';
 import { Outlet } from 'react-router-dom';
 
@@ -8,37 +7,8 @@ function App() {
   return (
     <>
       <Header />
-      <Outlet /> {/* This will render the matched route component */}
+      <Outlet /> {/* Note : This will render the matched route component */}
       <Footer />
-=======
-import { Routes, Route } from "react-router-dom";
-import Home  from './Pages/Home.tsx';  
-import Pro from './Pages/Pro.bono.tsx';
-import Faq  from './Pages/Faq.tsx';
-import Footer  from './components/Footer.tsx';
-import './index.css'
-import Donate from './Pages/Donation.tsx';
-// import DonationPage from './Pages/donate.tsx';
-import Community from './Pages/community.tsx';
-import About from './Pages/about.tsx';
-
-function App() {
-  
-
-  return (
-    <>
-      <Header/>
-       <Routes>
-         <Route path="/" element={<Home />} />
-          <Route  path="/pro.bono"element= {<Pro />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/community" element={<Community />} />
-          {/* <Route path="/donate" element={<DonationPage />} /> */}
-          <Route path="/donate" element={<Donate />} />
-       </Routes>
-      <Footer/>    
->>>>>>> 510851d1ffafe629ff686fcf85f5d97116bec4c3
     </>
   );
 }
