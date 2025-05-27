@@ -134,7 +134,6 @@ function Community() {
         It affects women, men, children and individuals across cultures and communities. 
         Our mission is to:
           </p>
-          <p className="text-gray-600"> milk </p>
         <ul > 
         <li>Empower survivors through support, healing, and advocacy</li>
         <li>Educate communities on the root causes and consequences of GBV</li>
