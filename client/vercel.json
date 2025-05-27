@@ -11,8 +11,10 @@
     "git": {
         "deploymentEnabled": {
             "experiment-*": false,
-            "*-dev": false,
-            "main": false
+            "dev": false,
+            "jUWON": false,
+            "slyB": false,
+            "*-dev": false
         }
     }
 }
