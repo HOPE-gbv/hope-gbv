@@ -19,7 +19,7 @@ import Contact from './Pages/contact.tsx';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />, // Use App component as the main layout
+    element: <App />, 
     children: [
       {
         index: true,
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        path: 'login', // Moved login route back here
+        path: 'login', 
         element: <LoginPage />,
       },
       {
@@ -69,10 +69,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <Outlet />, // Use Outlet for nested routes
+        element: <Outlet />, // Remeber you used Outlet for nested routes
         children: [
           {
-            index: true, // This makes /admin/dashboard render DashboardPage
+            index: true, //* This makes /admin/dashboard render DashboardPage
             element: <DashboardPage />,
           },
           {
