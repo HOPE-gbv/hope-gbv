@@ -2,7 +2,7 @@ import { Hono, type Context } from 'hono'
 
 const AdminStats = new Hono()
 
-AdminStats.get('/admin/stats', async (c: Context) => {
+AdminStats.get('/dashboard', async (c: Context) => {
   // Get time period from query parameters (default to 'week')
   const period = c.req.query("period") || "week"
 

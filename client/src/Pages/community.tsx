@@ -39,7 +39,7 @@ function Community() {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Join Our Community</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mt-8">Join Our Community</h1>
           <p className="text-xl text-gray-600">
             Connect with others, get support, and engage with our councilors.
           </p>
@@ -115,7 +115,7 @@ function Community() {
         </div>
 
         <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">About Our Community</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-5">About Our Community</h2>
           <p className="text-gray-600 mb-4">
             Our community is a safe space for sharing ideas, getting support, and connecting with
             like-minded individuals. Whether you prefer Telegram or WhatsApp, we have an active
@@ -134,7 +134,6 @@ function Community() {
         It affects women, men, children and individuals across cultures and communities. 
         Our mission is to:
           </p>
-          <p className="text-gray-600"> milk </p>
         <ul > 
         <li>Empower survivors through support, healing, and advocacy</li>
         <li>Educate communities on the root causes and consequences of GBV</li>

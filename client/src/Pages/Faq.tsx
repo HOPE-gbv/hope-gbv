@@ -42,11 +42,10 @@ const faqs = [
 ];
 
 export default function Faq() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggle = (index : number) => {
-    // @ts-expect-error a type error
-    setOpenIndex( index === openIndex ? null : index);
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   return (

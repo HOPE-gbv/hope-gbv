@@ -463,22 +463,22 @@ export  const CASES = [
   export const ADMIN_USERS = [
     {
       id: 1,
-      email: "admin@safehaven.org",
+      email: "admin@HOPE.org",
       // In a real app, this would be a hashed password
-      password: "SafeHaven2023!",
+      password: "HOPE2023!",
       role: "admin",
       name: "Admin User",
     },
     {
       id: 2,
-      email: "caseworker@safehaven.org",
+      email: "caseworker@HOPE.org",
       password: "Caseworker2023!",
       role: "caseworker",
       name: "Case Worker",
     },
     {
       id: 3,
-      email: "supervisor@safehaven.org",
+      email: "supervisor@HOPE.org",
       password: "Supervisor2023!",
       role: "supervisor",
       name: "Supervisor",

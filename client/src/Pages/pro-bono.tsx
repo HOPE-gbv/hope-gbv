@@ -1,21 +1,7 @@
 import {useState} from 'react';
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
-// type FormData = {
-//   firstname: string;
-//   gender: string;
-//   email: string;
-//   phonenumber: string;
-//   contactmethod: string;
-//   experienced: string;
-//   date: string;
-//   danger: string;
-//   location: string;
-//   state: string;
-//   authority: string;
-//   shelter: string;
-// }
-export default function Pro() {
+export default function ProbonoPage() {
   const [email, setEmail] = useState <string>('');
     const [gender, setGender] = useState <string>('');
     const [location, setLocation] = useState <string>('');
@@ -30,7 +16,6 @@ export default function Pro() {
     const [shelter, setShelter]= useState<string>('');
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      
       // const Data = {
       //   firstname,
       //   gender,
@@ -49,10 +34,8 @@ export default function Pro() {
       
     };
   return (
-    <div className="container mx-auto p-4 md:p-6 lg:p-8">
-
-    <form onSubmit={handleSubmit} className="space-y-12 px-4 max-sm:px-2 max-md:px-6 py-10 p-8" >    
-      <div className="space-y-12 ">
+    <form onSubmit={handleSubmit} className="space-y-12 px-4 max-sm:px-2 max-md:px-6 py-10" >    
+      <div className="space-y-12 container ">
 
       <div className=" pt-20 px-8">
       <img
@@ -456,6 +439,5 @@ export default function Pro() {
 
       
     </form>
-    </div>
   )
 }

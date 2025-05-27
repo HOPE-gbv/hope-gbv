@@ -5,12 +5,10 @@
     "strict": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],      
-    },
+   
     "types": [
-      "node"
+      "node",
+      "bcrypt"
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",

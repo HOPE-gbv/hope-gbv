@@ -6,8 +6,8 @@ import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import path from 'path';
 import routes from './routes/index.js';
-import { prisma } from './lib/prisma-client.js';
 import { config } from 'dotenv';
+import { env } from './lib/env.js';
 
 config();
 type Variables = {
@@ -34,10 +34,7 @@ api.route('/', routes);
 app.route('/api', api);
 
 
-app.get('/user', async (c) => {
-  const user = await prisma.user.findMany();
-  return c.json({ user });
-})
+
 // Static files
 // app.use(
 //   '/assets/*',
@@ -60,7 +57,7 @@ app.get('/user', async (c) => {
 serve(
   {
     fetch: app.fetch,
-    port: 3000,
+    port: env.PORT,
   },
   (info) => {
     console.log(`Server is running on http://localhost:${info.port}`);

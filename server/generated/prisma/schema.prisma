@@ -10,13 +10,149 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
-model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  CreatedAt DateTime @default(now())
+model Lawyer {
+  id              Int     @id @default(autoincrement())
+  name            String
+  photo           String?
+  location        String
+  // specializations Json    @db.Json
+  specializations Json
+  rating          Float?
+  reviews         Int     @default(0)
+  verified        Boolean @default(false)
+  active          Boolean @default(true)
+  barNumber       String  @unique
+  experience      Int
+  languages       Json
+  // languages       
+  availability    String?
+  successRate     String?
+  bio             String?
+  caseCount       Int     @default(0)
+  education       String?
+  contactHours    String?
+
+  testimonials    LawyerTestimonial[]
+  expertise       LawyerExpertise[]
+  documents       LawyerDocument[]
+  availabilityCal LawyerAvailability[]
+}
+
+model LawyerTestimonial {
+  id       Int    @id @default(autoincrement())
+  lawyer   Lawyer @relation(fields: [lawyerId], references: [id], onDelete: Cascade)
+  lawyerId Int
+  text     String
+  author   String
+}
+
+model LawyerExpertise {
+  id        Int    @id @default(autoincrement())
+  lawyer    Lawyer @relation(fields: [lawyerId], references: [id], onDelete: Cascade)
+  lawyerId  Int
+  expertise String
+}
+
+model LawyerDocument {
+  id          Int     @id @default(autoincrement())
+  lawyer      Lawyer  @relation(fields: [lawyerId], references: [id], onDelete: Cascade)
+  lawyerId    Int
+  name        String
+  type        String
+  description String?
+}
+
+model LawyerAvailability {
+  id       Int      @id @default(autoincrement())
+  lawyer   Lawyer   @relation(fields: [lawyerId], references: [id], onDelete: Cascade)
+  lawyerId Int
+  date     DateTime // YYYY-MM-DD
+  // slots    String[]
+  slots    Json
+}
+
+model Case {
+  id            String     @id
+  reportDate    DateTime
+  status        String
+  severity      String
+  type          String
+  location      String
+  assignedTo    Int?
+  adminUser     AdminUser? @relation(fields: [assignedTo], references: [id])
+  clientName    String
+  clientContact String?
+  lastUpdated   DateTime
+
+  notes   CaseNote[]
+  actions CaseAction[]
+}
+
+model CaseNote {
+  id      Int      @id @default(autoincrement())
+  case    Case     @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  caseId  String
+  date    DateTime
+  author  String
+  content String
+}
+
+model CaseAction {
+  id         Int      @id @default(autoincrement())
+  case       Case     @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  caseId     String
+  type       String
+  status     String
+  dueDate    DateTime
+  assignedTo String
+}
+
+model Report {
+  id              String     @id
+  reportDate      DateTime
+  reportType      String
+  incidentType    String
+  location        String
+  status          String
+  severity        String
+  hasEvidence     Boolean    @default(false)
+  hasWitnesses    Boolean    @default(false)
+  immediateDanger Boolean    @default(false)
+  clientName      String?
+  clientContact   String?
+  assignedTo      Int?
+  adminUser       AdminUser? @relation(fields: [assignedTo], references: [id])
+}
+
+model EmergencyContact {
+  id       Int     @id @default(autoincrement())
+  name     String
+  number   String
+  category String
+  region   String?
+}
+
+model Resource {
+  id          Int     @id @default(autoincrement())
+  title       String
+  type        String
+  category    String
+  description String?
+  fileUrl     String
+  pages       Int?
+}
+
+model AdminUser {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  role     String
+  name     String
+
+  cases   Case[]
+  reports Report[]
 }
