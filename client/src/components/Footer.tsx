@@ -15,8 +15,8 @@ export default function Footer() {
     setEmail('');
   };
     return (
-<footer className="bg-black text-white py-12">
-  <div className="container mx-auto px-4">
+<footer className="bg-black text-white  py-12 min-h-2 mx-auto">
+  <div className="container mx-auto  px-4">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div>
         <h3 className="text-xl font-bold mb-4">H.O.P.E</h3>
@@ -61,7 +61,7 @@ export default function Footer() {
           </li>
           <li className="flex items-center">
             <MailIcon className="h-5 w-5 mr-2 text-slate-300" /> */}
-            {/* <Link to="mailto:help@safehavennigeria.org" className="text-slate-300 hover:text-white">help@safehavennigeria.org</Link> */}
+            {/* <Link to="mailto:help@HOPEnigeria.org" className="text-slate-300 hover:text-white">help@HOPEnigeria.org</Link> */}
           {/* </li> */}
         </ul>
       </div>

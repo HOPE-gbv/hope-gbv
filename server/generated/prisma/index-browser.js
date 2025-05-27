@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.7.0
- * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+ * Prisma Client JS version: 6.8.2
+ * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
  */
 Prisma.prismaVersion = {
-  client: "6.7.0",
-  engine: "3cff47a7f5d65c3ea74883f1d736e41d68ce91ed"
+  client: "6.8.2",
+  engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -114,22 +114,143 @@ Prisma.NullTypes = {
  */
 
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.LawyerScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  photo: 'photo',
+  location: 'location',
+  specializations: 'specializations',
+  rating: 'rating',
+  reviews: 'reviews',
+  verified: 'verified',
+  active: 'active',
+  barNumber: 'barNumber',
+  experience: 'experience',
+  languages: 'languages',
+  availability: 'availability',
+  successRate: 'successRate',
+  bio: 'bio',
+  caseCount: 'caseCount',
+  education: 'education',
+  contactHours: 'contactHours'
+};
+
+exports.Prisma.LawyerTestimonialScalarFieldEnum = {
+  id: 'id',
+  lawyerId: 'lawyerId',
+  text: 'text',
+  author: 'author'
+};
+
+exports.Prisma.LawyerExpertiseScalarFieldEnum = {
+  id: 'id',
+  lawyerId: 'lawyerId',
+  expertise: 'expertise'
+};
+
+exports.Prisma.LawyerDocumentScalarFieldEnum = {
+  id: 'id',
+  lawyerId: 'lawyerId',
+  name: 'name',
+  type: 'type',
+  description: 'description'
+};
+
+exports.Prisma.LawyerAvailabilityScalarFieldEnum = {
+  id: 'id',
+  lawyerId: 'lawyerId',
+  date: 'date',
+  slots: 'slots'
+};
+
+exports.Prisma.CaseScalarFieldEnum = {
+  id: 'id',
+  reportDate: 'reportDate',
+  status: 'status',
+  severity: 'severity',
+  type: 'type',
+  location: 'location',
+  assignedTo: 'assignedTo',
+  clientName: 'clientName',
+  clientContact: 'clientContact',
+  lastUpdated: 'lastUpdated'
+};
+
+exports.Prisma.CaseNoteScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  date: 'date',
+  author: 'author',
+  content: 'content'
+};
+
+exports.Prisma.CaseActionScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  type: 'type',
+  status: 'status',
+  dueDate: 'dueDate',
+  assignedTo: 'assignedTo'
+};
+
+exports.Prisma.ReportScalarFieldEnum = {
+  id: 'id',
+  reportDate: 'reportDate',
+  reportType: 'reportType',
+  incidentType: 'incidentType',
+  location: 'location',
+  status: 'status',
+  severity: 'severity',
+  hasEvidence: 'hasEvidence',
+  hasWitnesses: 'hasWitnesses',
+  immediateDanger: 'immediateDanger',
+  clientName: 'clientName',
+  clientContact: 'clientContact',
+  assignedTo: 'assignedTo'
+};
+
+exports.Prisma.EmergencyContactScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  number: 'number',
+  category: 'category',
+  region: 'region'
+};
+
+exports.Prisma.ResourceScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  type: 'type',
+  category: 'category',
+  description: 'description',
+  fileUrl: 'fileUrl',
+  pages: 'pages'
+};
+
+exports.Prisma.AdminUserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  name: 'name',
-  CreatedAt: 'CreatedAt'
+  password: 'password',
+  role: 'role',
+  name: 'name'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 
 exports.Prisma.QueryMode = {
@@ -144,7 +265,18 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  Lawyer: 'Lawyer',
+  LawyerTestimonial: 'LawyerTestimonial',
+  LawyerExpertise: 'LawyerExpertise',
+  LawyerDocument: 'LawyerDocument',
+  LawyerAvailability: 'LawyerAvailability',
+  Case: 'Case',
+  CaseNote: 'CaseNote',
+  CaseAction: 'CaseAction',
+  Report: 'Report',
+  EmergencyContact: 'EmergencyContact',
+  Resource: 'Resource',
+  AdminUser: 'AdminUser'
 };
 
 /**

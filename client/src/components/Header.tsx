@@ -10,8 +10,9 @@ const navigation = [
   { name: 'About us', to: '/about' },
   { name: 'Pro bono lawyer', to: '/pro-bono' },
   { name: 'Eye witness', to: '/' },
+  { name: 'Donate', to: '/donate' },
   { name: 'Community', to: '/community' },
-  { name: 'contact Us', to: '/' },
+  { name: 'contact Us', to: '/contact' },
   { name: 'Faq', to: '/faq' },
 ]
 
@@ -27,7 +28,7 @@ export default function Example() {
               <span className="sr-only">H.O.P.E</span>
               <img
                 alt=""
-                src="/public/assets/H.O.P.E.png"
+                src="/assets/H.O.P.E.png"
                 className="h-8 w-auto"
               />
             </a>

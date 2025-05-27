@@ -115,7 +115,7 @@ function Community() {
         </div>
 
         <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">About Our Community</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-5">About Our Community</h2>
           <p className="text-gray-600 mb-4">
             Our community is a safe space for sharing ideas, getting support, and connecting with
             like-minded individuals. Whether you prefer Telegram or WhatsApp, we have an active

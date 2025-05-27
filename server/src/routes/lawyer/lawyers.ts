@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { LAWYERS } from '../../data/config.js';
+import prisma from '../../db/client.js';
 
 const app = new Hono();
 
@@ -27,6 +28,7 @@ interface Lawyer {
 }
 
 app.get('/', (c) => {
+
   // Get search parameters from the URL
   const searchTerm = c.req.query('search') || '';
   const location = c.req.query('location') || '';
@@ -70,6 +72,13 @@ app.get('/', (c) => {
   // Return the filtered lawyers
   return c.json({ lawyers: filteredLawyers });
 });
+
+app.get("/api/lawyers", async (req, res) => {
+  const lawyers = await prisma.lawyer.findMany();
+  return req.json({ lawyers });
+});
+
+
 
 app.get('/:id', (c) => {
   const id = Number(c.req.param('id'));
