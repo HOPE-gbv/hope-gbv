@@ -16,22 +16,21 @@ export default function Pro() {
     const [shelter, setShelter]= useState<string>('');
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      
-      // const Data = {
-      //   firstname,
-      //   gender,
-      //   email,
-      //   phonenumber,
-      //   contactmethod,
-      //   experienced,
-      //   date,
-      //   danger,
-      //   location,
-      //   state,
-      //   authority,
-      //   shelter,
+      const Data = {
+        firstname,
+        gender,
+        email,
+        phonenumber,
+        contactmethod,
+        experienced,
+        date,
+        danger,
+        location,
+        state,
+        authority,
+        shelter,
        
-      // };
+      };
       
     };
   return (

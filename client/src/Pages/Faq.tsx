@@ -44,7 +44,10 @@ const faqs = [
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
 
+<<<<<<< HEAD
 //@ts-expect-error Type 'number' is not assignable to type 'null'
+=======
+>>>>>>> 510851d1ffafe629ff686fcf85f5d97116bec4c3
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
