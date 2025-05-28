@@ -167,7 +167,7 @@ export default function AdminCasesPage() {
       case "closed":
         return "bg-gray-100 text-gray-800 border-gray-200";
       case "under review":
-        return "bg-purple-100 text-purple-800 border-purple-200";
+        return "bg-blue-100 text-blue-800 border-blue-200";
       case "assigned":
         return "bg-indigo-100 text-indigo-800 border-indigo-200";
       case "in progress":
@@ -191,7 +191,7 @@ export default function AdminCasesPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-700"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
       </div>
     );
   }
@@ -214,7 +214,7 @@ export default function AdminCasesPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Cases</CardTitle>
-            <Shield className="h-4 w-4 text-purple-600" />
+            <Shield className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{cases.length}</div>
@@ -377,7 +377,7 @@ export default function AdminCasesPage() {
             Export
           </Button>
           <Button
-            className="flex items-center bg-purple-600 hover:bg-purple-700"
+            className="flex items-center bg-blue-600 hover:bg-blue-700"
             onClick={() => navigate("/admin/cases/new")}
           >
             <Plus className="mr-2 h-4 w-4" />
