@@ -1,26 +1,23 @@
 import { Hono, type Context } from 'hono'
 import { Buffer } from 'node:buffer'; // Import the Buffer class
-import { ADMIN_USERS } from '../../../data/config.js';
-
-// In a real application, this would use a secure authentication system
-// with proper password hashing, database storage, etc.
-
+import prisma from '@/db/client.js'; // Import Prisma client
 
 const auth = new Hono()
 
-auth.post('/admin/auth/sign-in', async (c: Context) => {
+auth.post('/api/admin/auth/login', async (c: Context) => {
   try {
     const { email, password } = await c.req.json()
 
-    // Find the user with matching credentials
-    const user = ADMIN_USERS.find((u) => u.email === email && u.password === password)
+    // Find the user with matching credentials in the database
+    const user = await db.adminUser.findUnique({
+      where: { email: email },
+    });
 
-    if (!user) {
+    if (!user || user.password !== password) { // In a real app, hash passwords
       return c.json({ error: "Invalid credentials" }, 401)
     }
 
-    // In a real app, you would use a proper JWT or session token
-    // This is a simplified example
+    // Todo : Implement a proper JWT or session token
     const token = Buffer.from(JSON.stringify({ id: user.id, role: user.role })).toString("base64");
 
     // Set a secure HTTP-only cookie
@@ -41,7 +38,7 @@ auth.post('/admin/auth/sign-in', async (c: Context) => {
   }
 })
 
-auth.get('/admin/auth/validate', async (c: Context) => {
+auth.get('/api/admin/auth/validate', async (c: Context) => {
   const cookie = c.req.header('cookie');
   const token = cookie?.split('; ').find((row: string) => row.startsWith('admin_token='))?.split('=')[1];
 
@@ -52,7 +49,9 @@ auth.get('/admin/auth/validate', async (c: Context) => {
   try {
     // Decode the token
     const userData = JSON.parse(Buffer.from(token, "base64").toString())
-    const user = ADMIN_USERS.find((u) => u.id === userData.id)
+    const user = await db.adminUser.findUnique({
+      where: { id: userData.id },
+    });
 
     if (!user) {
       return c.json({ authenticated: false }, 401)
@@ -73,9 +72,8 @@ auth.get('/admin/auth/validate', async (c: Context) => {
   }
 })
 
-auth.delete('/admin/auth/sign-out', async (c: Context) => {
-  // In a real app, this would delete the admin token cookie
-  // For this example, we'll just return a success message
+auth.post('/api/admin/auth/logout', async (c: Context) => {
+  // Clear the admin token cookie
   c.header('Set-Cookie', `admin_token=; HttpOnly; Secure; SameSite=Strict; Max-Age=0; Path=/`);
   return c.json({ success: true })
 })

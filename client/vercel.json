@@ -2,19 +2,7 @@
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "/index.html",
-            "braches": [
-                "main"
-            ]
+            "destination": "/index.html"
         }
-    ],
-    "git": {
-        "deploymentEnabled": {
-            "experiment-*": false,
-            "dev": false,
-            "jUWON": false,
-            "slyB": false,
-            "*-dev": false
-        }
-    }
+    ]
 }

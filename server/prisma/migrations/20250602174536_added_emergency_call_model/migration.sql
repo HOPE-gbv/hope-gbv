@@ -139,6 +139,18 @@ CREATE TABLE "AdminUser" (
     "name" TEXT NOT NULL
 );
 
+-- CreateTable
+CREATE TABLE "EmergencyCall" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "emergencyType" TEXT NOT NULL,
+    "location" TEXT NOT NULL,
+    "phoneNumber" TEXT NOT NULL,
+    "recordingEnabled" BOOLEAN NOT NULL,
+    "callTime" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "status" TEXT NOT NULL DEFAULT 'initiated',
+    "notes" TEXT
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Lawyer_barNumber_key" ON "Lawyer"("barNumber");
 

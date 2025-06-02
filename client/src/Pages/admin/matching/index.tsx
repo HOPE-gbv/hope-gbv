@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-import { AlertCircle, ArrowRight, CheckCircle2, ChevronDown, Filter, Gavel, MapPin, Search, Star } from "lucide-react";
+import { AlertCircle, ArrowRight, CheckCircle2, ChevronDown, Filter, Gavel, MapPin, Search, Star, Trash2 } from "lucide-react"; // Added Trash2
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,19 +16,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Slider } from "@/components/ui/slider";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"; // Added Avatar imports
-import { casesService } from "@/services/admin/cases";
-import { lawyersService } from "@/services/admin/lawyers";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+// import { lawyersService } from "@/services/admin/lawyers"; // Removed lawyersService import
 
+// Updated Case interface to match the mocked report data from eye-witness.tsx
 interface Case {
   id: string;
-  reportDate: string;
-  status: string;
-  severity: string;
-  type: string;
+  typeOfIncident: string;
+  date: string;
   location: string;
-  assignedTo: number | null;
-  clientName: string;
+  briefDescription: string;
+  knowPerpetrator: boolean;
+  supportAfterSubmitting: boolean;
+  contactDetails: string;
+  assignedLawyer: number | null; // To store the ID of the assigned lawyer
 }
 
 interface Lawyer {
@@ -50,8 +50,63 @@ interface Lawyer {
   active: boolean;
 }
 
+// Mock lawyer data for client-side MVP
+const mockLawyers: Lawyer[] = [
+  {
+    id: 1,
+    name: "Aisha Bello",
+    photo: "/assets/lawyer1.png",
+    location: "Lagos",
+    specializations: ["Domestic Violence", "Child Custody"],
+    rating: 4.8,
+    reviews: 120,
+    barNumber: "LB12345",
+    experience: 10,
+    languages: ["English", "Yoruba"],
+    availability: "Mon-Fri",
+    successRate: "90%",
+    caseCount: 50,
+    verified: true,
+    active: true,
+  },
+  {
+    id: 2,
+    name: "Chike Obi",
+    photo: "/assets/lawyer2.png",
+    location: "Abuja",
+    specializations: ["Sexual Assault", "Human Trafficking"],
+    rating: 4.5,
+    reviews: 80,
+    barNumber: "AB67890",
+    experience: 7,
+    languages: ["English", "Igbo"],
+    availability: "Mon-Sat",
+    successRate: "85%",
+    caseCount: 35,
+    verified: true,
+    active: true,
+  },
+  {
+    id: 3,
+    name: "Fatima Musa",
+    photo: "/assets/lawyer3.png",
+    location: "Kano",
+    specializations: ["Stalking", "Restraining Orders"],
+    rating: 4.9,
+    reviews: 150,
+    barNumber: "KM11223",
+    experience: 15,
+    languages: ["English", "Hausa"],
+    availability: "Tue-Fri",
+    successRate: "95%",
+    caseCount: 60,
+    verified: true,
+    active: true,
+  },
+];
+
+
 export default function AdminMatchingPage() {
-  // const navigate = useNavigate();
   const [cases, setCases] = useState<Case[]>([]);
   const [lawyers, setLawyers] = useState<Lawyer[]>([]);
   const [loading, setLoading] = useState(true);
@@ -69,13 +124,13 @@ export default function AdminMatchingPage() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        // Fetch unassigned cases
-        const fetchedCases = await casesService.getAllCases(); // Assuming service can filter unassigned
-        setCases(fetchedCases.filter((c: Case) => c.assignedTo === null));
+        // Load mocked reports from localStorage
+        const storedReports = JSON.parse(localStorage.getItem('mockReports') || '[]');
+        // Filter for unassigned reports
+        setCases(storedReports.filter((c: Case) => c.assignedLawyer === null));
 
-        // Fetch available lawyers
-        const fetchedLawyers = await lawyersService.getAllLawyers(); // Assuming service can filter active/verified
-        setLawyers(fetchedLawyers);
+        // Use mock lawyers instead of fetching from service
+        setLawyers(mockLawyers);
       } catch (err) {
         setError("Failed to load data. Please try again.");
         console.error("Error fetching data:", err);
@@ -85,32 +140,39 @@ export default function AdminMatchingPage() {
     };
 
     fetchData();
-  }, []);
+  }, []); // Dependency array is empty, so it runs once on mount
 
-  const handleMatch = async () => {
+  const handleMatch = () => { // Changed to non-async as it's client-side only
     if (!selectedCase || !selectedLawyer) {
       return;
     }
 
-    try {
-      // In a real app, this would update the case with the assigned lawyer
-      // For this example, we'll just show a success message
-      setMatchSuccess(true);
+    // Update localStorage with the assigned lawyer
+    const allReports = JSON.parse(localStorage.getItem('mockReports') || '[]');
+    const updatedAllReports = allReports.map((report: Case) =>
+      report.id === selectedCase ? { ...report, assignedLawyer: selectedLawyer } : report
+    );
+    localStorage.setItem('mockReports', JSON.stringify(updatedAllReports));
 
-      // Reset selection after successful match
-      setTimeout(() => {
-        setMatchSuccess(false);
-        setSelectedCase("");
-        setSelectedLawyer(null);
+    setMatchSuccess(true);
 
-        // Refresh the case list to reflect the assignment
-        const updatedCases = cases.filter((c) => c.id !== selectedCase);
-        setCases(updatedCases);
-      }, 3000);
-    } catch (err) {
-      setError("Failed to match case with lawyer. Please try again.");
-      console.error("Error matching case:", err);
-    }
+    // Reset selection and refresh cases after successful match
+    setTimeout(() => {
+      setMatchSuccess(false);
+      setSelectedCase("");
+      setSelectedLawyer(null);
+
+      // Refresh the case list to reflect the assignment
+      const updatedCases = updatedAllReports.filter((c: Case) => c.assignedLawyer === null);
+      setCases(updatedCases);
+    }, 1500); // Simulate a short delay
+  };
+
+  const handleDeleteReport = (reportId: string) => {
+    const allReports = JSON.parse(localStorage.getItem('mockReports') || '[]');
+    const updatedReports = allReports.filter((report: Case) => report.id !== reportId);
+    localStorage.setItem('mockReports', JSON.stringify(updatedReports));
+    setCases(updatedReports.filter((c: Case) => c.assignedLawyer === null)); // Update displayed cases
   };
 
   const filteredCases = cases.filter((c) => {
@@ -118,8 +180,9 @@ export default function AdminMatchingPage() {
       const searchLower = caseSearchTerm.toLowerCase();
       return (
         c.id.toLowerCase().includes(searchLower) ||
-        c.clientName.toLowerCase().includes(searchLower) ||
-        c.type.toLowerCase().includes(searchLower)
+        c.briefDescription?.toLowerCase().includes(searchLower) || // Use optional chaining
+        c.typeOfIncident.toLowerCase().includes(searchLower) ||
+        c.location.toLowerCase().includes(searchLower)
       );
     }
     return true;
@@ -154,23 +217,12 @@ export default function AdminMatchingPage() {
     return matches;
   });
 
-  const getSeverityColor = (severity: string) => {
-    switch (severity.toLowerCase()) {
-      case "critical":
-        return "bg-red-100 text-red-800 border-red-200";
-      case "severe":
-        return "bg-orange-100 text-orange-800 border-orange-200";
-      case "moderate":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "fair":
-        return "bg-green-100 text-green-800 border-green-200";
-      default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
-
   const formatDate = (dateString: string) => {
+    if (!dateString) return 'N/A'; // Handle empty date strings
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) { // Check if date is valid
+      return 'Invalid Date';
+    }
     return new Intl.DateTimeFormat("en-NG", {
       year: "numeric",
       month: "short",
@@ -181,7 +233,7 @@ export default function AdminMatchingPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-700"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
       </div>
     );
   }
@@ -204,7 +256,7 @@ export default function AdminMatchingPage() {
           <CheckCircle2 className="h-4 w-4 text-green-600" />
           <AlertTitle>Success</AlertTitle>
           <AlertDescription>
-            Case has been successfully matched with the lawyer. The lawyer will be notified.
+            Report has been successfully matched with the lawyer. The lawyer will be notified.
           </AlertDescription>
         </Alert>
       )}
@@ -213,15 +265,15 @@ export default function AdminMatchingPage() {
         {/* Cases section */}
         <Card>
           <CardHeader>
-            <CardTitle>Unassigned Cases</CardTitle>
-            <CardDescription>Select a case to match with a lawyer</CardDescription>
+            <CardTitle>Unassigned Reports</CardTitle>
+            <CardDescription>Select a report to match with a lawyer</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="relative">
                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="Search cases..."
+                  placeholder="Search reports..."
                   className="pl-8"
                   value={caseSearchTerm}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCaseSearchTerm(e.target.value)}
@@ -230,32 +282,50 @@ export default function AdminMatchingPage() {
 
               <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2">
                 {filteredCases.length === 0 ? (
-                  <div className="text-center py-4 text-muted-foreground">No unassigned cases found.</div>
+                  <div className="text-center py-4 text-muted-foreground">No unassigned reports found.</div>
                 ) : (
                   filteredCases.map((caseItem) => (
                     <div
                       key={caseItem.id}
                       className={`p-4 rounded-lg border cursor-pointer transition-colors ${
-                        selectedCase === caseItem.id ? "bg-purple-50 border-purple-200" : "hover:bg-slate-50"
+                        selectedCase === caseItem.id ? "bg-blue-50 border-blue-200" : "hover:bg-slate-50"
                       }`}
                       onClick={() => setSelectedCase(caseItem.id)}
                     >
                       <div className="flex justify-between items-start">
                         <div>
-                          <h3 className="font-medium">{caseItem.id}</h3>
+                          <h3 className="font-medium">Report ID: {caseItem.id.substring(0, 8)}...</h3>
                           <p className="text-sm text-muted-foreground">
-                            {caseItem.type} - {formatDate(caseItem.reportDate)}
+                            Incident Type: {caseItem.typeOfIncident} - Date: {formatDate(caseItem.date)}
+                          </p>
+                          <p className="text-sm text-muted-foreground mt-1">
+                            Description: {caseItem.briefDescription ? `${caseItem.briefDescription.substring(0, 100)}${caseItem.briefDescription.length > 100 ? '...' : ''}` : 'N/A'}
                           </p>
                         </div>
-                        <Badge className={`${getSeverityColor(caseItem.severity)} border`}>{caseItem.severity}</Badge>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="text-red-500 hover:text-red-700"
+                          onClick={(e) => {
+                            e.stopPropagation(); // Prevent selecting the case when clicking delete
+                            handleDeleteReport(caseItem.id);
+                          }}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
                       </div>
                       <div className="mt-2 flex items-center text-sm">
                         <MapPin className="h-3.5 w-3.5 mr-1 text-muted-foreground" />
                         <span className="text-muted-foreground">{caseItem.location}</span>
                       </div>
                       <div className="mt-1 text-sm">
-                        <span className="font-medium">Client:</span> {caseItem.clientName}
+                        <span className="font-medium">Perpetrator Known:</span> {caseItem.knowPerpetrator ? 'Yes' : 'No'}
                       </div>
+                      {caseItem.supportAfterSubmitting && (
+                        <div className="mt-1 text-sm">
+                          <span className="font-medium">Contact for Follow-up:</span> {caseItem.contactDetails || 'Not provided'}
+                        </div>
+                      )}
                     </div>
                   ))
                 )}
@@ -371,7 +441,7 @@ export default function AdminMatchingPage() {
                     <div
                       key={lawyer.id}
                       className={`p-4 rounded-lg border cursor-pointer transition-colors ${
-                        selectedLawyer === lawyer.id ? "bg-purple-50 border-purple-200" : "hover:bg-slate-50"
+                        selectedLawyer === lawyer.id ? "bg-blue-50 border-blue-200" : "hover:bg-slate-50"
                       }`}
                       onClick={() => setSelectedLawyer(lawyer.id)}
                     >
@@ -415,7 +485,7 @@ export default function AdminMatchingPage() {
       <div className="flex justify-center">
         <Button
           size="lg"
-          className="bg-purple-600 hover:bg-purple-700 flex items-center gap-2"
+          className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2"
           disabled={!selectedCase || !selectedLawyer}
           onClick={handleMatch}
         >
