@@ -8,33 +8,23 @@ import path from 'path';
 import routes from './routes/index.js';
 import { config } from 'dotenv';
 import { env } from './lib/env.js';
-
 config();
-type Variables = {
-  currentUrl: string;
-};
-
-const app = new Hono<{ Variables: Variables }>();
+const app = new Hono();
 // Middleware
 app.use(cors({ origin: '*' }));
 app.use(logger());
-
 // HTTP Middleware
 app.use('*', async (c, next) => {
-  // Get protocol from header or default to http
-  const protocol = c.req.header('x-forwarded-proto') || 'http';
-  const fullUrl = `${protocol}://${c.req.header('host')}${c.req.url}`;
-  c.set('currentUrl', fullUrl);
-  await next();
+    // Get protocol from header or default to http
+    const protocol = c.req.header('x-forwarded-proto') || 'http';
+    const fullUrl = `${protocol}://${c.req.header('host')}${c.req.url}`;
+    c.set('currentUrl', fullUrl);
+    await next();
 });
-
 // Routes
 const api = new Hono();
 api.route('/', routes);
 app.route('/api', api);
-
-
-
 // Static files
 // app.use(
 //   '/assets/*',
@@ -42,7 +32,6 @@ app.route('/api', api);
 //     root: '../client/dist',
 //   }),
 // );
-
 // app.get('*', async (c) => {
 //   try {
 //     const indexPath = path.resolve('../client/dist/index.html');
@@ -53,14 +42,9 @@ app.route('/api', api);
 //     return c.text('Internal Server Error', 500);
 //   }
 // });
-
-serve(
-  {
+serve({
     fetch: app.fetch,
     port: env.PORT,
-  },
-  (info) => {
+}, (info) => {
     console.log(`Server is running on http://localhost:${info.port}`);
-  },
-);
-
+});

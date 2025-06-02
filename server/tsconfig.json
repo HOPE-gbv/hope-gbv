@@ -12,7 +12,14 @@
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-    "outDir": "./dist"
+    "outDir": "./dist",
+  "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    },
   },
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": ["node_modules"]
 }

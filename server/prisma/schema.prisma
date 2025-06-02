@@ -6,12 +6,12 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  // output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Lawyer {
@@ -36,10 +36,10 @@ model Lawyer {
   education       String?
   contactHours    String?
 
-  testimonials    LawyerTestimonial[]
-  expertise       LawyerExpertise[]
-  documents       LawyerDocument[]
-  availabilityCal LawyerAvailability[]
+  testimonials         LawyerTestimonial[]
+  expertise            LawyerExpertise[]
+  documents            LawyerDocument[]
+  availabilityCalendar LawyerAvailability[] // Calendar for availability
 }
 
 model LawyerTestimonial {
