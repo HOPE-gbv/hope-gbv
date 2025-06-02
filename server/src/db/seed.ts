@@ -6,8 +6,8 @@ import {
     EMERGENCY_CONTACTS,
     ADMIN_USERS,
     RESOURCES,
-} from '../data/config.js'; // Assuming this path is correct relative to seed.ts
-import prisma from './client.js';   // Assuming this path is correct relative to seed.ts
+} from '../data/config'; // Use .ts extension
+import prisma from './client';   // Use .ts extension
 import { hash } from 'bcrypt';
 
 // Add 'export' keyword here
@@ -136,48 +136,106 @@ export async function seedReports() {
 // Add 'export' keyword here
 export async function seedEmergencyContacts() {
   console.log('Seeding Emergency Contacts...');
-  const contactsToSeed = [];
-  for (const category of Object.keys(EMERGENCY_CONTACTS as any)) {
-    if (category === 'stateContacts') {
-      for (const region of Object.keys((EMERGENCY_CONTACTS as any)[category])) {
-        for (const contact of (EMERGENCY_CONTACTS as any)[category][region]) {
-          contactsToSeed.push({ ...contact, region, category }); // Add category here as well
-        }
-      }
-    } else {
-      for (const contact of (EMERGENCY_CONTACTS as any)[category]) {
-        contactsToSeed.push({ ...contact, region: null, category }); // Add category here
-      }
-    }
-  }
+  try {
+    // Clear existing data
+    await prisma.emergencyContact.deleteMany({});
+    console.log('Cleared existing emergency contacts.');
 
-  // Since EmergencyContact ID is autoincrement, we should not provide it during creation
-  // if it's already present in your data and you want Prisma to handle it.
-  // If your data.ts has 'id' for emergency contacts, you might need to omit it here
-  // or ensure your upsert logic handles it if you were using upsert.
-  // For createMany, it's simpler to just provide the data fields.
-  await prisma.emergencyContact.createMany({
-    data: contactsToSeed.map(({ id, ...rest }) => rest), // Exclude 'id' if it's meant to be auto-generated
-    skipDuplicates: true, // This might need a unique constraint to work as expected for "duplicates"
-  });
-  console.log('Emergency Contacts seeded.');
+    const contactsToSeed: { name: string; number: string; category: string; region?: string | null }[] = [];
+    
+    // Type assertion for EMERGENCY_CONTACTS
+    const emergencyContactsData = EMERGENCY_CONTACTS as {
+      national: Array<{ id: number; name: string; number: string; category: string }>;
+      gbvHotlines: Array<{ id: number; name: string; number: string; category: string }>;
+      stateContacts: { [key: string]: Array<{ id: number; name: string; number: string; category: string }> };
+      mentalHealth: Array<{ id: number; name: string; number: string; category: string }>;
+    };
+
+    // Process national contacts
+    emergencyContactsData.national.forEach(contact => {
+      contactsToSeed.push({ name: contact.name, number: contact.number, category: contact.category, region: null });
+    });
+
+    // Process GBV hotlines
+    emergencyContactsData.gbvHotlines.forEach(contact => {
+      contactsToSeed.push({ name: contact.name, number: contact.number, category: contact.category, region: null });
+    });
+
+    // Process state contacts
+    for (const region of Object.keys(emergencyContactsData.stateContacts)) {
+      emergencyContactsData.stateContacts[region].forEach(contact => {
+        contactsToSeed.push({ name: contact.name, number: contact.number, category: contact.category, region: region });
+      });
+    }
+
+    // Process mental health contacts
+    emergencyContactsData.mentalHealth.forEach(contact => {
+      contactsToSeed.push({ name: contact.name, number: contact.number, category: contact.category, region: null });
+    });
+    
+    if (contactsToSeed.length > 0) {
+      await prisma.emergencyContact.createMany({
+        data: contactsToSeed, // ID is auto-generated, so no need to map and exclude
+        skipDuplicates: true, // Keeps existing behavior, though deleteMany should handle clean slate
+      });
+      console.log(`Successfully seeded ${contactsToSeed.length} emergency contacts.`);
+    } else {
+      console.log('No emergency contacts found to seed.');
+    }
+
+  } catch (error) {
+    console.error('Error seeding emergency contacts:', error);
+    // Optionally rethrow or handle as needed for your seeding script's overall flow
+    // process.exit(1); 
+  }
 }
 
 // Add 'export' keyword here
 export async function seedResources() {
   console.log('Seeding Resources...');
-  const resourcesToSeed = [];
-  for (const category of Object.keys(RESOURCES as any)) {
-    for (const resource of (RESOURCES as any)[category]) {
-      resourcesToSeed.push(resource);
-    }
-  }
+  try {
+    // Clear existing data
+    await prisma.resource.deleteMany({});
+    console.log('Cleared existing resources.');
 
-  await prisma.resource.createMany({
-    data: resourcesToSeed.map(({ id, ...rest }) => rest), // Exclude 'id' if it's auto-generated
-    skipDuplicates: true,
-  });
-  console.log('Resources seeded.');
+    const resourcesToSeed: { title: string; type: string; category: string; description?: string | null; fileUrl: string; pages?: number | null; }[] = [];
+    
+    // Type assertion for RESOURCES structure
+    const resourcesData = RESOURCES as {
+      [key: string]: Array<{
+        id: number; // Will be omitted
+        title: string;
+        type: string;
+        category: string; // This is the actual category string like "Safety Planning"
+        description?: string;
+        fileUrl: string;
+        pages?: number;
+      }>;
+    };
+
+    for (const key of Object.keys(resourcesData)) { // key is 'safetyPlanning', 'legalResources', etc.
+      resourcesData[key].forEach(resource => {
+        // The 'resource' object already has the correct 'category' field.
+        // We just need to omit 'id'.
+        const { id, ...restOfResource } = resource;
+        resourcesToSeed.push(restOfResource);
+      });
+    }
+    
+    if (resourcesToSeed.length > 0) {
+      await prisma.resource.createMany({
+        data: resourcesToSeed,
+        skipDuplicates: true, // Good to keep, though deleteMany should ensure clean slate
+      });
+      console.log(`Successfully seeded ${resourcesToSeed.length} resources.`);
+    } else {
+      console.log('No resources found to seed.');
+    }
+
+  } catch (error) {
+    console.error('Error seeding resources:', error);
+    // process.exit(1); // Optionally exit if critical
+  }
 }
 
 // The main execution block should ideally be in scripts/seed-db.ts

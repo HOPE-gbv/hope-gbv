@@ -10,7 +10,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -155,4 +155,15 @@ model AdminUser {
 
   cases   Case[]
   reports Report[]
+}
+
+model EmergencyCall {
+  id               String   @id @default(uuid())
+  emergencyType    String
+  location         String
+  phoneNumber      String
+  recordingEnabled Boolean
+  callTime         DateTime @default(now())
+  status           String   @default("initiated")
+  notes            String?
 }

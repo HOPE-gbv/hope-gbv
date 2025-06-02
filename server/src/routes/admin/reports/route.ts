@@ -104,7 +104,7 @@ AdminReports.post('/admin/reports', async (c: Context) => {
   }
 });
 
-AdminReports.put('/api/admin/reports/:id', async (c: Context) => {
+AdminReports.put('/admin/reports/:id', async (c: Context) => {
   try {
     const reportId = c.req.param("id");
     const updates = await c.req.json();
@@ -134,7 +134,7 @@ AdminReports.put('/api/admin/reports/:id', async (c: Context) => {
   }
 });
 
-AdminReports.delete('/api/admin/reports/:id', async (c: Context) => {
+AdminReports.delete('/admin/reports/:id', async (c: Context) => {
   try {
     const reportId = c.req.param("id");
     const deletedReport = await prisma.report.delete({
